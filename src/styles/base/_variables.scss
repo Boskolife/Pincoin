@@ -6,6 +6,7 @@ $black-bg: #121212;
 $black-text: #1C1C1C;
 $white-bg: #F7F7F7;
 $white-text: #FFFFFF;
+$pink:#FA5EB5;
 
 // CSS Custom Properties (Variables) for theme colors
 // These variables automatically switch between light and dark themes
@@ -26,30 +27,30 @@ $white-text: #FFFFFF;
     --color-bg-primary: #{$white-bg};
     --color-bg-secondary: #{$white-text};
     --color-bg-header: #{$white-bg};
-    
+
     // Text colors
     --color-text-primary: #{$black-text};
     --color-text-secondary: #{$black-bg};
     --color-text-inverse: #{$white-text};
-    
+
     // Link colors
     --color-link: #{$black-text};
     --color-link-hover: #{$black-bg};
-    
+
     // Button colors
     --color-btn-bg: #{$black-bg};
     --color-btn-text: #{$black-text};
     --color-btn-hover-opacity: 0.8;
-    
+
     // Form colors
     --color-form-border: #{$black-text};
     --color-form-border-focus: #{$black-bg};
     --color-form-placeholder: #{$black-text};
-    
+
     // Theme switcher colors
     --color-theme-switcher-bg: rgba(0, 0, 0, 0.05);
     --color-theme-switcher-bg-hover: rgba(0, 0, 0, 0.1);
-    
+
     // Transition speed
     --transition-speed: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -60,33 +61,37 @@ $white-text: #FFFFFF;
     --color-bg-primary: #{$black-bg};
     --color-bg-secondary: #{$black-text};
     --color-bg-header: #{$black-bg};
-    
+
     // Text colors
     --color-text-primary: #{$white-text};
     --color-text-secondary: #{$white-bg};
     --color-text-inverse: #{$black-text};
-    
+
     // Link colors
     --color-link: #{$white-text};
     --color-link-hover: #{$white-bg};
-    
+
     // Button colors
     --color-btn-bg: #{$white-text};
     --color-btn-text: #{$white-text};
     --color-btn-hover-opacity: 0.8;
-    
+
     // Form colors
     --color-form-border: rgba(255, 255, 255, 0.3);
     --color-form-border-focus: #{$white-text};
     --color-form-placeholder: rgba(255, 255, 255, 0.5);
-    
+
     // Theme switcher colors
     --color-theme-switcher-bg: rgba(255, 255, 255, 0.1);
     --color-theme-switcher-bg-hover: rgba(255, 255, 255, 0.15);
 }
 
 
-$base-font-sans-serif: 'Inter', 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
+$base-font-sans-serif: 'Inter',
+'Arial',
+'Helvetica Neue',
+'Helvetica',
+sans-serif;
 // This is the default html and body font-size for the base rem value.
 $rem-base: 16px;
 
@@ -99,9 +104,7 @@ $base-font-family: $base-font-sans-serif !default;
 $dark-bg-color: $black-bg !default;
 $dark-text-color: $white-text !default;
 
-$vertical-rhythm: (
-    $line-height-base * 1em
-);
+$vertical-rhythm: ($line-height-base * 1em);
 
 $base-min-width: 320px;
 
