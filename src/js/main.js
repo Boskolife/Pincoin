@@ -28,6 +28,14 @@ const ThemeSwitcher = (function () {
         if (themeToggle) {
             themeToggle.checked = theme === 'dark';
         }
+
+        // Update iOS status bar style
+        const statusBarMeta = document.getElementById('status-bar-theme');
+        if (statusBarMeta) {
+            // 'black' = white text on black background (dark theme)
+            // 'default' = black text on white background (light theme)
+            statusBarMeta.setAttribute('content', theme === 'dark' ? 'black' : 'default');
+        }
     };
 
     /**
