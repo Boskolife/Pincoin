@@ -19,15 +19,15 @@ body {
     -moz-osx-font-smoothing: grayscale;
     color: var(--color-text-primary);
     background-color: var(--color-bg-primary);
-    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition-speed);
 }
 
 // Smooth theme transitions for all elements (excluding specific cases)
 * {
-    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color var(--transition-speed),
+                color var(--transition-speed),
+                border-color var(--transition-speed),
+                box-shadow var(--transition-speed);
 }
 
 // Exclude elements that shouldn't have transitions

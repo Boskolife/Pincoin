@@ -28,6 +28,7 @@
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
+        transition: background var(--transition-speed);
 
         [data-theme="light"] & {
             background: linear-gradient(278.03deg, #686868 11.66%, #000000 70.92%);
