@@ -9,6 +9,33 @@ htmlFiles.forEach((file) => {
   input[file.replace('.html', '')] = resolve(__dirname, 'src', file);
 });
 
+// Custom plugin to force reload on partial changes
+const handlebarsReloadPlugin = () => {
+  return {
+    name: 'handlebars-reload',
+    handleHotUpdate({ file, server }) {
+      const normalizedPath = file.replace(/\\/g, '/');
+      
+      // Check if changed file is a partial (template or section)
+      if (normalizedPath.includes('/templates/') || normalizedPath.includes('/sections/')) {
+        // Force full page reload when partials change
+        server.ws.send({
+          type: 'full-reload',
+          path: '*'
+        });
+        return [];
+      }
+    },
+    configureServer(server) {
+      const templatesDir = resolve(__dirname, 'src/templates');
+      const sectionsDir = resolve(__dirname, 'src/sections');
+      
+      // Explicitly watch templates and sections directories
+      server.watcher.add([templatesDir, sectionsDir]);
+    }
+  };
+};
+
 export default defineConfig({
   base: '/Pincoin',
   root: 'src',
@@ -21,16 +48,15 @@ export default defineConfig({
       ],
       reloadOnPartialChange: true
     }),
+    handlebarsReloadPlugin(),
   ],
   server: {
     watch: {
-      // Watch templates and sections directories for changes
-      // Since root is 'src', paths are relative to src directory
-      include: [
-        '**/*.html',
-        'templates/**',
-        'sections/**'
-      ]
+      // Ensure all HTML files are watched
+      ignored: []
+    },
+    hmr: {
+      overlay: true
     }
   },
   build: {

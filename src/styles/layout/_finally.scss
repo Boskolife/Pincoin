@@ -1,0 +1,157 @@
+.finally {
+
+    &__content {
+        border: 1px solid $pink;
+        border-radius: 20px;
+        padding: 0 15px;
+        @include adaptive-value("padding-top", 260, 150, 1);
+        @include adaptive-value("padding-bottom", 260, 150, 1);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-bg-secondary);
+    }
+
+    &__icon {
+        position: absolute;
+        width: 99px;
+        height: 99px;
+        border-radius: 50%;
+        border: 2px solid #FA5EB5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 2.05px 2.05px 3.07px 0px #FFFFFF26 inset;
+        backdrop-filter: blur(10px);
+        background: #C136F314;
+
+        @include media ("<tablet") {
+            width: 64px;
+            height: 64px;
+        }
+
+        img {
+            width: 82px;
+            height: 82px;
+
+            @include media ("<tablet") {
+                width: 54px;
+                height: 54px;
+            }
+        }
+
+        &.icon-1 {
+            bottom: 13%;
+            left: 25%;
+
+            @include media ("<tablet") {
+                display: none;
+            }
+        }
+
+        &.icon-2 {
+            top: 8%;
+            right: 20%;
+
+            @include media ("<tablet") {
+                top: 15%;
+                right: 5%;
+            }
+        }
+
+        &.icon-3 {
+            bottom: 10%;
+            right: 6%;
+
+            @include media ("<tablet") {
+                right: 62%;
+                bottom: 9%;
+            }
+        }
+
+        &.icon-4 {
+            top: 13%;
+            left: 9%;
+
+            @include media ("<tablet") {
+                top: 5%;
+                left: 15%;
+            }
+        }
+    }
+
+    &__star {
+        position: absolute;
+
+        @include media ("<tablet") {
+            width: 55px;
+        }
+
+        &.light {
+            display: none;
+        }
+
+        [data-theme="light"] & {
+            &.dark {
+                display: none;
+            }
+
+            &.light {
+                display: block;
+            }
+        }
+
+        &.star-1 {
+            top: 20%;
+            left: 23%;
+
+            @include media ("<tablet") {
+                top: 22%;
+                left: 2%;
+
+                rotate: 9deg;
+            }
+        }
+
+        &.star-2 {
+            bottom: 15%;
+            right: 25%;
+
+            @include media ("<tablet") {
+                bottom: 20%;
+            }
+        }
+    }
+
+    &__title {
+        @include adaptive-value("font-size", 40, 20, 1);
+        font-weight: 500;
+        line-height: 120%;
+        letter-spacing: -1.5px;
+        text-align: center;
+        max-width: 605px;
+        width: 100%;
+        margin: 0 auto;
+        color: transparent;
+        background: linear-gradient(119.79deg, #E2E2E2 35.69%, #686868 97.88%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        [data-theme="light"] & {
+            background: linear-gradient(278.03deg, #686868 11.66%, #000000 70.92%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        br{
+            display: none;
+
+            @include media ("<tablet") {
+                display: block;
+            }
+        }
+    }
+}
