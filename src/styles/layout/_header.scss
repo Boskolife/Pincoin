@@ -2,6 +2,11 @@
     padding: 20px 0;
     transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
+    .container{
+        max-width: 1388px;
+        padding: 0 14px;
+    }
+
     &__inner {
         display: flex;
         justify-content: space-between;

@@ -14,8 +14,25 @@ export default defineConfig({
   root: 'src',
   publicDir: '../public',
   plugins: [
-    handlebars({ partialDirectory: resolve(__dirname, 'src/templates') }),
+    handlebars({ 
+      partialDirectory: [
+        resolve(__dirname, 'src/templates'),
+        resolve(__dirname, 'src/sections')
+      ],
+      reloadOnPartialChange: true
+    }),
   ],
+  server: {
+    watch: {
+      // Watch templates and sections directories for changes
+      // Since root is 'src', paths are relative to src directory
+      include: [
+        '**/*.html',
+        'templates/**',
+        'sections/**'
+      ]
+    }
+  },
   build: {
     rollupOptions: {
       input,
