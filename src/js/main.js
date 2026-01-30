@@ -34,7 +34,7 @@ const ThemeSwitcher = (function () {
         if (statusBarMeta) {
             // 'black' = white text on black background (dark theme)
             // 'default' = black text on white background (light theme)
-            statusBarMeta.setAttribute('content', theme === 'dark' ? 'black' : 'default');
+            statusBarMeta.setAttribute('content', theme === 'dark' ? '#121212' : '#F7F7F7');
         }
     };
 
