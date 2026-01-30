@@ -17,18 +17,19 @@ textarea {
 	-webkit-border-radius: 0;
 	outline: none;
 	box-sizing: border-box;
-	border: 1px solid $form-element-border-color;
-	color: $black;
-	// &:hover {
-
-	// }
+	border: 1px solid var(--color-form-border);
+	color: var(--color-text-primary);
+	background-color: var(--color-bg-secondary);
+	transition: border-color var(--transition-speed),
+	color var(--transition-speed),
+	background-color var(--transition-speed);
 
 	&:focus {
-		border-color: $form-element-focus-border-color;
+		border-color: var(--color-form-border-focus);
 	}
 
 	@include placeholder {
-		color: $placeholder-color;
+		color: var(--color-form-placeholder);
 	}
 }
 

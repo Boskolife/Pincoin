@@ -1,1 +1,179 @@
-#header {}
+.header {
+    padding: 20px 0;
+    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--color-bg-secondary);
+        border-radius: 9999px;
+        padding: 8px 10px;
+        transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0px 2px 20px 0px #0000001A;
+    }
+
+    &__logo {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: #FFFFFF14;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        box-shadow: 0px 4px 6px 0px #4C146814;
+
+        @include media ("<phone") {
+            order: 2;
+            width: 44px;
+            height: 44px;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0px 0px 3.5px 0px #F2F2F233 inset;
+        }
+    }
+
+    &__menu {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        @include media ("<phone") {
+            display: contents;
+        }
+    }
+
+    &__menu-button {
+        padding: 14px 24px;
+        background-color: var(--color-btn-bg);
+        color: $white-text;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+        border-radius: 999px;
+        @include adaptive-value("font-size", 18, 14, 1);
+        @include adaptive-value("padding-top", 14, 12, 1);
+        @include adaptive-value("padding-bottom", 14, 12, 1);
+        @include adaptive-value("padding-right", 24, 16, 1);
+        @include adaptive-value("padding-left", 24, 16, 1);
+        background: linear-gradient(98.09deg, #FA5EB5 18.04%, #8610E1 100%);
+        box-shadow: 0px 4px 23.2px 0px #FA5EB582;
+        position: relative;
+        overflow: hidden;
+
+        [data-theme="light"] & {
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+                linear-gradient(142.93deg, #FFB2EB 15.16%, #FF51D3 95.7%);
+        }
+
+        @include media ("<phone") {
+            order: 3;
+            height: 44px;
+        }
+    }
+
+    &__theme-switcher {
+        position: relative;
+        width: 87px;
+        height: 50px;
+        padding: 8px;
+        background: linear-gradient(98.09deg, rgba(250, 94, 181, 0.5) 18.04%, rgba(134, 16, 225, 0.5) 100%);
+        border-radius: 100px;
+
+        @include media ("<phone") {
+            order: 1;
+            padding: 6px 7px;
+            height: 44px;
+        }
+    }
+
+    &__theme-toggle {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    &__theme-switcher-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        cursor: pointer;
+        border-radius: 50%;
+        background-color: $white-bg;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        overflow: visible;
+
+        @include media ("<phone") {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    &__theme-switcher-icon {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.3s ease-in-out;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        &--moon {
+            opacity: 1; // Dark theme is default (checked)
+        }
+
+        &--sun {
+            opacity: 0; // Hidden by default
+        }
+    }
+
+    // When dark theme is active (checkbox checked) - button on the left, moon visible
+    &__theme-toggle:checked+&__theme-switcher-label {
+        // Button stays on the left (default position)
+        transform: translateY(-50%);
+
+        .header__theme-switcher-icon--moon {
+            opacity: 1;
+        }
+
+        .header__theme-switcher-icon--sun {
+            opacity: 0;
+        }
+    }
+
+    // When light theme is active (checkbox unchecked) - button on the right, sun visible
+    &__theme-toggle:not(:checked)+&__theme-switcher-label {
+        transform: translateY(-50%) translateX(calc(87px - 34px - 16px)); // Move to right: container width - button width - padding left - padding right
+
+        .header__theme-switcher-icon--moon {
+            opacity: 0;
+        }
+
+        .header__theme-switcher-icon--sun {
+            opacity: 1;
+        }
+    }
+}

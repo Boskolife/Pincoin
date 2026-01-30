@@ -1,1 +1,25 @@
-<header id="header"></header>
+<header id="header" class="header">
+    <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">
+                <img src="/images/logo.svg" alt="logo">
+            </div>
+            <div class="header__menu">
+                <div class="header__theme-switcher">
+                    <input type="checkbox" id="theme-toggle" class="header__theme-toggle" aria-label="Toggle theme" checked>
+                    <label for="theme-toggle" class="header__theme-switcher-label">
+                        <span class="header__theme-switcher-icon header__theme-switcher-icon--moon">
+                            <img src="/images/moon.svg" alt="Dark theme">
+                        </span>
+                        <span class="header__theme-switcher-icon header__theme-switcher-icon--sun">
+                            <img src="/images/sun.svg" alt="Light theme">
+                        </span>
+                    </label>
+                </div>
+                <button class="header__menu-button">
+                    Join waitlist
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
