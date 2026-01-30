@@ -1,0 +1,488 @@
+.content-block {
+
+    &__inner {
+        position: relative;
+        border: 1px solid $pink;
+        border-radius: 20px;
+        padding: 0 15px;
+        @include adaptive-value("padding-top", 260, 150, 1);
+        @include adaptive-value("padding-bottom", 260, 150, 1);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-bg-secondary);
+    }
+
+    &__title {
+        @include adaptive-value("font-size", 40, 20, 1);
+        font-weight: 500;
+        line-height: 120%;
+        letter-spacing: -1.5px;
+        text-align: center;
+        max-width: 605px;
+        width: 100%;
+        margin: 0 auto;
+        color: transparent;
+        background: linear-gradient(119.79deg, #E2E2E2 35.69%, #686868 97.88%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        [data-theme="light"] & {
+            background: linear-gradient(278.03deg, #686868 11.66%, #000000 70.92%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        br {
+            display: none;
+
+            @include media ("<tablet") {
+                display: block;
+            }
+        }
+    }
+
+    &__text {
+        max-width: 652px;
+        color: $gray;
+        @include adaptive-value("font-size", 26, 14, 1);
+        font-weight: 500;
+        line-height: 120%;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
+
+.finally {
+
+    &__icon {
+        position: absolute;
+        width: 99px;
+        height: 99px;
+        border-radius: 50%;
+        border: 2px solid #FA5EB5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 2.05px 2.05px 3.07px 0px #FFFFFF26 inset;
+        backdrop-filter: blur(10px);
+        background: #C136F314;
+
+        @include media ("<tablet") {
+            width: 64px;
+            height: 64px;
+        }
+
+        img {
+            width: 82px;
+            height: 82px;
+
+            @include media ("<tablet") {
+                width: 54px;
+                height: 54px;
+            }
+        }
+
+        &.icon-1 {
+            bottom: 13%;
+            left: 25%;
+
+            @include media ("<tablet") {
+                display: none;
+            }
+        }
+
+        &.icon-2 {
+            top: 8%;
+            right: 20%;
+
+            @include media ("<tablet") {
+                top: 15%;
+                right: 5%;
+            }
+        }
+
+        &.icon-3 {
+            bottom: 10%;
+            right: 6%;
+
+            @include media ("<tablet") {
+                right: 62%;
+                bottom: 9%;
+            }
+        }
+
+        &.icon-4 {
+            top: 13%;
+            left: 9%;
+
+            @include media ("<tablet") {
+                top: 5%;
+                left: 15%;
+            }
+        }
+    }
+
+    &__star {
+        position: absolute;
+
+        @include media ("<tablet") {
+            width: 55px;
+        }
+
+        &.star-1 {
+            top: 20%;
+            left: 23%;
+
+            @include media ("<tablet") {
+                top: 22%;
+                left: 2%;
+
+                rotate: 9deg;
+            }
+        }
+
+        &.star-2 {
+            bottom: 15%;
+            right: 25%;
+
+            @include media ("<tablet") {
+                bottom: 20%;
+            }
+        }
+    }
+
+    &__title {
+        max-width: 605px;
+    }
+}
+
+.short-section {
+
+    &__content {
+        flex-direction: column;
+        @include adaptive-value("padding-top", 260, 130, 1);
+        @include adaptive-value("padding-bottom", 220, 130, 1);
+    }
+
+    &__title {
+        max-width: 675px;
+        @include adaptive-value("margin-bottom", 40, 26, 1);
+    }
+
+    &__star {
+        position: absolute;
+
+        // Random positioning for stars - completely random values
+        &.star-1 {
+            top: 17%;
+            left: 9%;
+            transform: rotate(47deg);
+            width: 100px;
+        }
+
+        &.star-2 {
+            top: 18%;
+            left: 50%;
+            transform: rotate(1.79deg);
+
+            @include media ("<tablet") {
+                width: 90px;
+                top: 8%;
+            }
+        }
+
+        &.star-3 {
+            top: 2%;
+            left: 80%;
+            transform: rotate(1.79deg);
+            width: 75px;
+        }
+
+        &.star-4 {
+            bottom: 35%;
+            left: 5%;
+            transform: rotate(-36deg);
+            width: 60px;
+        }
+
+        &.star-5 {
+            bottom: 33%;
+            left: 30%;
+            transform: translateY(-50%) rotate(28deg);
+            width: 50px;
+
+            @include media ("<tablet") {
+                bottom: 15%;
+            }
+        }
+
+        &.star-6 {
+            bottom: 7%;
+            right: 40%;
+            transform: translateY(-50%) rotate(-44deg);
+            width: 50px;
+        }
+
+        &.star-7 {
+            top: 35%;
+            right: 5%;
+            transform: rotate(11deg);
+            width: 100px;
+
+            @include media ("<tablet") {
+                width: 75px;
+                top: 50%;
+            }
+        }
+    }
+}
+
+.swap-section {
+
+    &__content {
+        @include adaptive-value("padding-top", 230, 80, 1);
+        @include adaptive-value("padding-bottom", 160, 80, 1);
+        flex-direction: column;
+    }
+
+    &__img {
+        position: absolute;
+
+        &.img-1 {
+            top: 10%;
+            right: 20%;
+
+            @include media ("<tablet") {
+                width: 29px;
+                height: 29px;
+            }
+        }
+
+        &.img-2 {
+            top: 5%;
+            left: 15%;
+
+            @include media ("<tablet") {
+                width: 34px;
+            }
+        }
+
+        &.img-3 {
+            bottom: 5%;
+            right: 25%;
+
+            @include media ("<tablet") {
+                width: 25px;
+            }
+        }
+
+        &.img-4 {
+            left: 10%;
+            bottom: 10%;
+
+            @include media ("<tablet") {
+                width: 27px;
+            }
+        }
+
+        &.img-5 {
+            bottom: 25%;
+            right: 5%;
+
+            @include media ("<tablet") {
+                width: 28px;
+            }
+        }
+    }
+
+    &__title {
+        max-width: 905px;
+        @include adaptive-value("margin-bottom", 40, 26, 1);
+    }
+}
+
+.checkout-section {
+
+    &__content {
+        @include adaptive-value("padding-top", 265, 102, 1);
+        @include adaptive-value("padding-bottom", 175, 102, 1);
+        flex-direction: column;
+    }
+
+    &__title {
+        max-width: 925px;
+        @include adaptive-value("margin-bottom", 40, 26, 1);
+    }
+
+    &__img {
+        position: absolute;
+
+        @include media ("<tablet") {
+            width: 67px;
+        }
+
+        &.img-1 {
+            top: 10%;
+            right: 5%;
+        }
+
+        &.img-2 {
+            bottom: 5%;
+            left: 15%;
+        }
+
+        &.img-3 {
+            top: 13%;
+            left: 50%;
+        }
+
+        &.img-4 {
+            top: 5%;
+            left: 5%;
+        }
+
+        &.img-5 {
+            bottom: 9%;
+            right: 7%;
+        }
+    }
+}
+
+.promise {
+
+    &__content {
+        @include adaptive-value("padding-top", 275, 120, 1);
+        @include adaptive-value("padding-bottom", 235, 104, 1);
+        flex-direction: column;
+    }
+
+    &__title {
+        max-width: 840px;
+        margin-bottom: 14px;
+    }
+
+    &__border {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+
+        @include media ("<tablet") {
+            top: 25%;
+        }
+    }
+
+    &__logo {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+        border: 1px solid #FA5EB5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 2.05px 2.05px 3.07px 0px rgba(255, 255, 255, 0.1490196078) inset;
+        backdrop-filter: blur(5px);
+        background: rgba(193, 54, 243, 0.3);
+        width: 60px;
+        height: 60px;
+
+        @include media ("<tablet") {
+            top: 25%;
+            width: 43px;
+            height: 43px;
+        }
+
+        [data-theme="light"] & {
+            border: 1px solid $white-text;
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0px 4px 6px 0px #4C146814;
+        }
+
+        &-img {
+            width: 50%;
+            height: 50%;
+        }
+    }
+
+
+    &__logo-star {
+        width: 100px;
+        position: absolute;
+        top: -27px;
+        right: -30px;
+
+        @include media ("<tablet") {
+            top: -18px;
+            right: -21px;
+        }
+    }
+
+
+    &__star {
+        position: absolute;
+
+        &.star-1 {
+            top: 5%;
+            left: 5%;
+            width: 70px;
+        }
+
+        &.star-2 {
+            top: 15%;
+            left: 10%;
+            rotate: -12deg;
+
+            @include media ("<tablet") {
+                display: none;
+            }
+        }
+
+        &.star-3 {
+            top: 5%;
+            right: 10%;
+            rotate: 12deg;
+
+            @include media ("<tablet") {
+                width: 75px;
+            }
+        }
+
+        &.star-4 {
+            top: 25%;
+            right: 5%;
+            width: 90px;
+
+            @include media ("<tablet") {
+                display: none;
+            }
+        }
+
+        &.star-5 {
+            bottom: 10%;
+            left: 25%;
+            width: 70px;
+
+            @include media ("<tablet") {
+                left: 15%;
+            }
+        }
+
+        &.star-6 {
+            bottom: 5%;
+            right: 25%;
+
+            @include media ("<tablet") {
+                width: 85px;
+            }
+        }
+    }
+}

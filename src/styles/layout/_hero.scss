@@ -32,20 +32,6 @@
         width: 50%;
         height: auto;
         
-        &.light {
-            display: none;
-        }
-        
-        [data-theme="light"] & {
-            &.light {
-                display: block;
-            }
-            
-            &.dark {
-                display: none;
-            }
-        }
-        
         @include media ("<desktop") {
             z-index: -1;
             right: auto;

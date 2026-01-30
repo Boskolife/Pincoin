@@ -1,8 +1,26 @@
+#wrapper {
+    overflow: hidden;
+}
+
 .container {
     max-width: 1320px;
     width: 100%;
     margin: 0 auto;
     padding: 0 10px;
+}
+
+.light {
+    display: none;
+}
+
+[data-theme="light"] {
+    .dark {
+        display: none;
+    }
+
+    .light {
+        display: block;
+    }
 }
 
 .popup {
@@ -264,12 +282,15 @@
     padding: 0 0 0 24px;
     box-shadow: 0px 0px 23px 0px #F2F2F233 inset;
 
+    [data-theme="light"] & {
+        background: rgba($color: #ffffff, $alpha: 0.8)
+    }
+
     &:hover {
         span {
             rotate: 45deg;
         }
     }
-
 
     span {
         display: flex;
