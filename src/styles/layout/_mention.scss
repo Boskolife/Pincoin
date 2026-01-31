@@ -1,6 +1,7 @@
 .mention {
     @include adaptive-value("padding-top", 120, 90, 1);
     position: relative;
+    overflow: hidden;
 
     &::after {
         content: '';
@@ -10,23 +11,30 @@
         width: 100%;
         height: 35%;
         background: linear-gradient(0deg, #121212 0%, rgba(18, 18, 18, 0) 60.58%);
+
+        [data-theme="light"] & {
+            background: linear-gradient(0deg, #F7F7F7 0%, rgba(247, 247, 247, 0) 60.58%);
+
+        }
     }
 
     &::before {
         content: '';
         position: absolute;
         z-index: -1;
-        bottom: -50%;
+        bottom: -115%;
         left: 50%;
         transform: translate(-50%, -50%);
         background: #C136F39C;
-        filter: blur(634px);
+        filter: blur(300px);
+        max-width: 1050px;
         width: 80%;
         height: auto;
         aspect-ratio: 3 / 2;
 
         @include media ("<tablet") {
             filter: blur(125px);
+            bottom: -50%;
         }
 
     }
@@ -57,7 +65,7 @@
         line-height: 120%;
         margin-bottom: 16px;
 
-        br{
+        br {
             display: none;
 
             @include media ("<tablet") {
@@ -78,7 +86,6 @@
         max-width: 1185px;
         width: 100%;
         margin: 0 auto;
-        
 
         @include media ("<tablet") {
             height: 205px;

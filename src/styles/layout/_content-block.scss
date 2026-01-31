@@ -162,6 +162,11 @@
 }
 
 .short-section {
+    padding: 52px 0;
+
+    @include media ("<tablet") {
+        padding: 80px 0 50px 0;
+    }
 
     &__content {
         flex-direction: column;
