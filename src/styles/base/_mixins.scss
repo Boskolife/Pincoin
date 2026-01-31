@@ -301,3 +301,32 @@ transition: $list;
 	font-size: $pxSize;
 	font-size: ($pxSize / 10px) + rem;
 }
+
+/// Gradient text with theme support
+/// @example scss - Usage
+///   .title {
+///     @include gradient-text;
+///   }
+///   or with custom gradients:
+///   .title {
+///     @include gradient-text(
+///       linear-gradient(119.79deg, #E2E2E2 35.69%, #686868 97.88%),
+///       linear-gradient(278.03deg, #686868 11.66%, #000000 70.92%)
+///     );
+///   }
+@mixin gradient-text(
+	$dark-gradient: linear-gradient(119.79deg, #E2E2E2 35.69%, #686868 97.88%),
+	$light-gradient: linear-gradient(278.03deg, #686868 11.66%, #000000 70.92%)
+) {
+	background: $dark-gradient;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+	[data-theme="light"] & {
+		background: $light-gradient;
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+}

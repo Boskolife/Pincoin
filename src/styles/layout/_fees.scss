@@ -32,17 +32,7 @@
         text-align: center;
         margin-bottom: 5px;
         color: transparent;
-        background: linear-gradient(119.79deg, #E2E2E2 35.69%, #686868 97.88%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-
-        [data-theme="light"] & {
-            background: linear-gradient(278.03deg, #686868 11.66%, #000000 70.92%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        @include gradient-text;
     }
 
     &__img {

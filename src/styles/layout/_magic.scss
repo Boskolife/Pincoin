@@ -1,0 +1,103 @@
+.magic {
+    padding: 95px 0 145px 0;
+
+    .container {
+        position: relative;
+    }
+
+    @include media ("<tablet") {
+        padding: 50px 0;
+    }
+
+    &__title {
+        @include adaptive-value("font-size", 56, 24, 1);
+        font-weight: 500;
+        line-height: 120%;
+        letter-spacing: -1.5px;
+        text-align: center;
+        max-width: 605px;
+        width: 100%;
+        margin: 0 auto;
+        @include gradient-text;
+        @include adaptive-value("margin-bottom", 600, 255, 1);
+    }
+
+    &__img {
+        position: absolute;
+        z-index: -1;
+        pointer-events: none;
+        top: 10%;
+        left: 50%;
+        width: 100%;
+        transform: translateX(-50%);
+
+        @include media ("<phone") {
+            height: 460px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__content {
+        max-width: 875px;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $pink;
+        margin: 0 auto;
+        backdrop-filter: blur(10px);
+        background: rgba(193, 54, 243, 0.3);
+        @include adaptive-value("width", 168, 100, 1);
+        @include adaptive-value("height", 168, 100, 1);
+        @include adaptive-value("margin-bottom", 95, 40, 1);
+        @include adaptive-value("border-radius", 40, 17, 1);
+
+        &-img {
+            width: 55%;
+            height: 55%;
+        }
+    }
+
+    &__text {
+        line-height: 120%;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+
+        &:not(:last-child) {
+            @include adaptive-value("margin-bottom", 16, 8, 1);
+        }
+
+        br{
+            display: none;
+
+            @include media ("<tablet") {
+                display: block;
+            }
+        }
+
+        &.top-text {
+            @include adaptive-value("font-size", 26, 18, 1);
+            font-weight: 600;
+            max-width: 655px;
+            color: #E8E8E8;
+        }
+
+        &.bottom-text {
+            @include adaptive-value("font-size", 26, 14, 1);
+            font-weight: 500;
+            max-width: 875px;
+            color: $gray;
+        }
+    }
+}
