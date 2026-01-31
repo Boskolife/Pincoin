@@ -87,6 +87,20 @@
         width: 100%;
         margin: 0 auto;
 
+        &.light {
+            display: none;
+        }
+
+        [data-theme="light"] & {
+            &.dark {
+                display: none;
+            }
+
+            &.light {
+                display: block;
+            }
+        }
+
         @include media ("<tablet") {
             height: 205px;
         }
