@@ -1,0 +1,179 @@
+.feed {
+    @include media ("<desktop") {
+        padding-bottom: 50px;
+    }
+
+    &__content {
+        &-top {
+            margin-bottom: 80px;
+        }
+
+        &-bottom {
+            position: relative;
+        }
+
+        &-bottom-text-wrapper {
+            position: absolute;
+            top: 15%;
+            right: 0;
+            max-width: 542px;
+            width: 100%;
+
+
+            @include media ("<desktop") {
+                position: static;
+                margin: 0 auto;
+            }
+
+            .feed__text {
+                text-align: start;
+
+                @include media ("<desktop") {
+                    text-align: center;
+                }
+
+                @include media ("<tablet") {
+                    &.top-text {
+                        max-width: 343px;
+                        margin: 0 auto 8px auto;
+                    }
+
+                    &.bottom-text {
+                        max-width: 272px;
+                    }
+                }
+            }
+        }
+    }
+
+    &__title {
+        color: #E8E8E8;
+        @include adaptive-value("font-size", 56, 24, 1);
+        font-weight: 500;
+        line-height: 120%;
+
+        letter-spacing: -1.5px;
+        text-align: center;
+        margin-bottom: 5px;
+        display: flex;
+        flex-direction: column;
+        width: max-content;
+        margin: 0 auto;
+        text-align: center;
+
+        span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            @include adaptive-value("margin-left", 300, 70, 1);
+
+            img {
+                @include adaptive-value("width", 40, 20, 1);
+            }
+        }
+    }
+
+    &__img {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: #C136F39C;
+            filter: blur(300px);
+            width: 516px;
+            height: 250px;
+
+            @include media ("<tablet") {
+                width: 150px;
+                height: 150px;
+                filter: blur(150px);
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        &.img-2 {
+
+
+            @include media ("<tablet") {
+                height: 420px;
+
+                img {
+                    object-fit: cover;
+                    object-position: top left;
+                }
+            }
+
+            &::before {
+                left: 30%;
+                top: 30%;
+                width: 250px;
+                height: 250px;
+
+                @include media ("<tablet") {
+                    width: 150px;
+                    height: 150px;
+                    filter: blur(150px);
+                }
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 35%;
+                background: linear-gradient(0deg, #121212 0%, rgba(18, 18, 18, 0.9) 38%, rgba(18, 18, 18, 0) 100%);
+
+                @include media ("<tablet") {
+                    height: 50%;
+                }
+            }
+
+        }
+    }
+
+    &__text {
+        text-align: center;
+
+        &.top-text {
+            @include adaptive-value("font-size", 26, 18, 1);
+            color: $white-text;
+            @include adaptive-value("margin-bottom", 23, 8, 1);
+        }
+
+        &.bottom-text {
+            @include adaptive-value("font-size", 26, 14, 1);
+            color: $gray;
+            max-width: 760px;
+            width: 100%;
+            margin: 0 auto;
+
+            @include media ("<tablet") {
+                max-width: 321px;
+            }
+
+            br {
+                @include media ("<tablet") {
+                    display: none;
+                }
+            }
+        }
+    }
+
+}
