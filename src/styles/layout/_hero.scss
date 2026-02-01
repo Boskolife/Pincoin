@@ -31,7 +31,7 @@
         max-width: 640px;
         width: 50%;
         height: auto;
-        
+
         @include media ("<desktop") {
             z-index: -1;
             right: auto;
@@ -66,6 +66,12 @@
         justify-content: center;
         filter: drop-shadow(0px 4px 6px #4C146814);
         background: rgba(255, 255, 255, 0.08);
+
+        [data-theme="light"] & {
+            border: 1px solid $white-text;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0px 0px 3px 0px #F2F2F233;
+        }
 
         @include media ("<desktop") {
             display: none;
