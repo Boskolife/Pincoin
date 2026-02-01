@@ -196,3 +196,292 @@
 
     }
 }
+
+.cards-middle {
+
+    &__content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+    }
+
+    &__item {
+        &:nth-child(1) {
+            flex: 1 1 636px;
+            height: 636px;
+
+            @include media ("<tablet") {
+                flex: auto;
+                height: 384px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                overflow: visible;
+                text-align: center;
+            }
+
+            .cards-middle__img {
+                position: absolute;
+                bottom: 0;
+                right: 50%;
+                transform: translateX(50%);
+                max-width: 535px;
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                object-position: center;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    z-index: -1;
+                    bottom: -1%;
+                    right: 50%;
+                    transform: translateX(50%);
+                    background: #C136F39C;
+                    filter: blur(200px);
+                    border-radius: 50%;
+                    width: 316px;
+                    height: 316px;
+
+                    @include media ("<tablet") {
+                        bottom: 20%;
+                        filter: blur(65px);
+                        width: 200px;
+                        height: 160px;
+                    }
+
+                    [data-theme="light"] & {
+                        display: none;
+                    }
+                }
+
+                @include media ("<tablet") {
+                    max-width: 95%;
+                    width: 100%;
+                    bottom: 10%;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 40%;
+                        background: linear-gradient(0deg, #1C1C1C 50.09%, rgba(28, 28, 28, 0.7) 63.5%, rgba(28, 28, 28, 0) 96.94%);
+                    }
+                }
+            }
+
+            .cards-middle__text {
+                &.bottom-text {
+                    max-width: 531px;
+                    width: 100%;
+
+                    @include media ("<tablet") {
+                        max-width: 257px;
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+
+        &:nth-child(2) {
+            flex: 1 1 636px;
+            height: 636px;
+
+            @include media ("<tablet") {
+                flex: auto;
+                height: 452px;
+                text-align: center;
+            }
+
+            .cards-middle__img {
+                position: absolute;
+                bottom: 0;
+                right: 50%;
+                transform: translateX(50%);
+                max-width: 546px;
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                object-position: center;
+
+                @include media ("<tablet") {
+                    max-width: 95%;
+                }
+            }
+
+            .cards-middle__text {
+
+                &.top-text {
+                    @include media ("<tablet") {
+                        max-width: 177px;
+                        width: 100%;
+                        margin: 0 auto 4px auto;
+                    }
+                }
+
+                &.bottom-text {
+                    max-width: 433px;
+                    width: 100%;
+
+                    @include media ("<tablet") {
+                        max-width: 283px;
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+
+        &:nth-child(3) {
+            flex: 1 1 742px;
+            height: 424px;
+
+            @include media ("<tablet") {
+                flex: auto;
+                height: 452px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                overflow: visible;
+                text-align: center;
+            }
+
+            .cards-middle__img {
+                position: absolute;
+                z-index: 1;
+                bottom: 0;
+                right: 0;
+                max-width: 695px;
+                width: 65%;
+                height: auto;
+                object-fit: cover;
+                object-position: center;
+
+                @include media ("<tablet") {
+                    max-width: 91%;
+                    width: 100%;
+                    bottom: 4%;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 40%;
+                        background: linear-gradient(0deg, #1C1C1C 50.09%, rgba(28, 28, 28, 0.7) 63.5%, rgba(28, 28, 28, 0) 96.94%);
+
+                        [data-theme="light"] & {
+                            background: linear-gradient(0deg, #FFFFFF 49.42%, rgba(255, 255, 255, 0.7) 58.41%, rgba(255, 255, 255, 0) 80.85%);
+
+                        }
+                    }
+                }
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    z-index: -1;
+                    bottom: -1%;
+                    right: 50%;
+                    transform: translateX(50%);
+                    background: #C136F39C;
+                    filter: blur(200px);
+                    border-radius: 50%;
+                    width: 316px;
+                    height: 316px;
+
+                    @include media ("<tablet") {
+                        bottom: 30%;
+                        filter: blur(65px);
+                        width: 200px;
+                        height: 160px;
+                    }
+
+                    [data-theme="light"] & {
+                        display: none;
+                    }
+                }
+            }
+
+            .cards-middle__text {
+                position: relative;
+                z-index: 2;
+
+
+
+                &.bottom-text {
+                    max-width: 410px;
+
+                    @include media ("<tablet") {
+                        padding: 0 25px;
+                    }
+                }
+            }
+        }
+
+        &:nth-child(4) {
+            flex: 1 1 530px;
+            height: 424px;
+
+
+            @include media ("<tablet") {
+                flex: auto;
+                height: 452px;
+                text-align: center;
+            }
+
+            .cards-middle__img {
+                position: absolute;
+                bottom: 0;
+                right: 50%;
+                transform: translateX(50%);
+                max-width: 303px;
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                object-position: center;
+
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    z-index: -1;
+                    bottom: -1%;
+                    right: 50%;
+                    transform: translateX(50%);
+                    background: #C136F39C;
+                    filter: blur(200px);
+                    border-radius: 50%;
+                    width: 316px;
+                    height: 316px;
+
+                    @include media ("<tablet") {
+                        bottom: 30%;
+                        filter: blur(85px);
+                        width: 200px;
+                        height: 200px;
+                    }
+
+                    [data-theme="light"] & {
+                        display: none;
+                    }
+                }
+            }
+
+            .cards-middle__text {
+                &.bottom-text {
+                    max-width: 424px;
+
+                    @include media ("<tablet") {
+                        max-width: 315px;
+                        width: 100%;
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+    }
+}
