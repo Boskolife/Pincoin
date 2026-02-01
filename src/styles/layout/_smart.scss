@@ -1,0 +1,105 @@
+.smart {
+    padding-top: 120px;
+    @include adaptive-value("padding-top", 120, 60, 1);
+
+    @include media ("<desktop") {
+        padding-bottom: 40px;
+    }
+
+    .container {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 537px;
+            height: 537px;
+            border-radius: 50%;
+            background: #C136F39C;
+            filter: blur(300px);
+
+            @include media ("<tablet") {
+                width: 150px;
+                height: 150px;
+                filter: blur(150px);
+            }
+
+            [data-theme="light"] & {
+                display: none;
+            }
+        }
+    }
+
+    &__img {
+        display: block;
+        max-width: 1088px;
+        width: 100%;
+        margin: 0 auto;
+
+        &.light {
+            display: none;
+        }
+
+        [data-theme="light"] & {
+            &.dark {
+                display: none;
+            }
+
+            &.light {
+                display: block;
+            }
+        }
+    }
+
+    &__title {
+        @include adaptive-value("font-size", 40, 18, 1);
+        font-weight: 500;
+        line-height: 120%;
+        letter-spacing: -1.5px;
+        text-align: end;
+        max-width: 286px;
+        width: 22%;
+        margin: 0 auto;
+        @include gradient-text;
+        position: absolute;
+        top: 2%;
+        left: 10%;
+
+        @include media ("<desktop") {
+            position: static;
+            max-width: 100%;
+            width: 100%;
+            margin: 0 auto 8px auto;
+            text-align: center
+        }
+    }
+
+    &__text {
+        @include adaptive-value("font-size", 26, 14, 1);
+        color: $gray;
+        font-weight: 500;
+        line-height: 120%;
+        text-align: start;
+        max-width: 421px;
+        width: 30%;
+        position: absolute;
+        top: 2%;
+        right: 1%;
+
+        @include media ("<desktop") {
+            position: static;
+            max-width: 100%;
+            width: 100%;
+            margin: 0 auto 8px auto;
+            text-align: center
+        }
+
+        @include media ("<tablet") {
+            max-width: 285px;
+        }
+    }
+}

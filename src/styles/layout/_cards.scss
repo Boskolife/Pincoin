@@ -489,3 +489,108 @@
         }
     }
 }
+
+.cards-bottom {
+    padding: 80px 0;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 0;
+
+        @include media ("<tablet") {
+            padding: 8px 8px 40px 8px;
+        }
+
+        @include media ("<tablet") {
+            flex-direction: column;
+            text-align: center;
+            gap: 28px;
+        }
+
+        .cards__text {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &:first-child {
+            margin-bottom: 12px;
+
+            .cards-bottom__img {
+                max-width: 800px;
+                width: 100%;
+                border-radius: 30px;
+                overflow: hidden;
+
+                @include media ("<tablet") {
+                    border-radius: 12px;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .cards__text-wrapper {
+                max-width: 420px;
+                width: 100%;
+                padding: 14px;
+
+                @include media ("<tablet") {
+                    padding: 0 6px;
+                }
+            }
+        }
+
+        &:last-child {
+            justify-content: space-between;
+            padding: 80px 40px;
+
+            @include media ("<tablet") {
+                flex-direction: column-reverse;
+                padding: 20px 8px 40px 8px;
+            }
+
+            .cards__text-wrapper {
+                max-width: 420px;
+                width: 100%;
+
+                .cards__text {
+                    br {
+                        @include media ("<tablet") {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            .cards-bottom__img {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 250px;
+                width: 250px;
+                height: 250px;
+                border-radius: 50%;
+                margin-right: 80px;
+                @include adaptive-value("margin-right", 80, 0, 1);
+                border: 4px solid $pink;
+                background: #C136F314;
+                box-shadow: 0px 0px 30px 5px #B3B3B380 inset;
+
+                @include media ("<tablet") {
+                    margin: 0;
+                }
+
+                img {
+                    width: 80%;
+                    height: 80%;
+                }
+            }
+        }
+
+    }
+}
