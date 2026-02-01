@@ -1,0 +1,74 @@
+.ask {
+
+    .container {
+        padding: 344px 14px;
+        @include adaptive-value("padding-top", 344, 83, 1);
+        @include adaptive-value("padding-bottom", 344, 142, 1);
+        position: relative;
+        height: 100%;
+
+    }
+
+    &__img {
+        position: absolute;
+        z-index: -1;
+        pointer-events: none;
+        filter: blur(5px);
+
+        &.img-1 {
+            width: 340px;
+            @include adaptive-value("width", 340, 101, 1);
+            top: 20%;
+            left: 0;
+
+            @include media ("<tablet") {
+                top: 25%;
+            }
+        }
+
+        &.img-2 {
+            @include adaptive-value("width", 400, 130, 1);
+            top: 15%;
+            right: 0;
+
+            @include media ("<tablet") {
+                top: 50%;
+                transform: translateY(-50%);
+                rotate: -11deg
+            }
+        }
+
+        &.img-3 {
+            @include adaptive-value("width", 360, 110, 1);
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            @include media ("<tablet") {
+                left: 20%;
+                bottom: 20%;
+            }
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__title {
+        @include gradient-text;
+        @include adaptive-value("font-size", 40, 18, 1);
+        font-weight: 600;
+        line-height: 120%;
+        text-align: center;
+
+        @include media ("<tablet") {
+            max-width: 235px;
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+}
