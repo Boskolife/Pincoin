@@ -269,6 +269,11 @@
                         width: 100%;
                         height: 40%;
                         background: linear-gradient(0deg, #1C1C1C 50.09%, rgba(28, 28, 28, 0.7) 63.5%, rgba(28, 28, 28, 0) 96.94%);
+
+
+                        [data-theme="light"] & {
+                            background: linear-gradient(0deg, #FFFFFF 49.42%, rgba(255, 255, 255, 0.7) 58.41%, rgba(255, 255, 255, 0) 80.85%);
+                        }
                     }
                 }
             }
@@ -375,7 +380,6 @@
 
                         [data-theme="light"] & {
                             background: linear-gradient(0deg, #FFFFFF 49.42%, rgba(255, 255, 255, 0.7) 58.41%, rgba(255, 255, 255, 0) 80.85%);
-
                         }
                     }
                 }
