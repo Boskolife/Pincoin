@@ -1,0 +1,136 @@
+.ready {
+    padding-top: 70px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        bottom: -115%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(193, 54, 243, 0.6117647059);
+        filter: blur(300px);
+        max-width: 1050px;
+        width: 80%;
+        height: auto;
+        aspect-ratio: 3 / 2;
+    }
+
+    &__content {
+        max-width: 757px;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        @include adaptive-value("margin-bottom", 80, 40, 1);
+    }
+
+    &__title {
+        @include adaptive-value("font-size", 56, 24, 1);
+        @include adaptive-value("margin-bottom", 30, 24, 1);
+        font-weight: 500;
+        line-height: 120%;
+        letter-spacing: -1.5px;
+        text-align: center;
+        @include gradient-text;
+
+        span {
+            color: $violet;
+            -webkit-text-fill-color: $violet;
+
+            [data-theme="light"] & {
+                color: $pink;
+                -webkit-text-fill-color: $pink;
+            }
+        }
+    }
+
+    &__subtitle {
+        @include adaptive-value("font-size", 26, 18, 1);
+        font-weight: 600;
+        line-height: 120%;
+        text-align: center;
+        color: #E8E8E8;
+        @include adaptive-value("margin-bottom", 16, 8, 1);
+
+        @include media ("<tablet") {
+            max-width: 225px;
+            width: 100%;
+            margin: 0 auto 8px auto;
+        }
+
+        [data-theme="light"] & {
+            color: $black-text;
+        }
+    }
+
+    &__text {
+        @include adaptive-value("font-size", 26, 14, 1);
+        font-weight: 500;
+        line-height: 120%;
+        text-align: center;
+        color: $gray;
+
+        @include media ("<tablet") {
+            max-width: 313px;
+            width: 100%;
+            margin: 0 auto;
+            margin-bottom: 14px;
+        }
+    }
+
+    &__img {
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        position: relative;
+
+        @include media ("<tablet") {
+            @include adaptive-value("height", 320, 210, 1);
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 65%;
+            background: linear-gradient(0deg, #121212 0%, rgba(18, 18, 18, 0) 60.58%);
+
+            [data-theme="light"] & {
+                background: linear-gradient(0deg, #F7F7F7 0%, rgba(247, 247, 247, 0) 60.58%);
+            }
+        }
+
+        img {
+            max-width: 1185px;
+            width: 100%;
+            margin: 0 auto;
+            height: 100%;
+
+            @include media ("<tablet") {
+                object-position: top center;
+                object-fit: cover;
+            }
+        }
+
+        &.light {
+            display: none;
+        }
+
+        [data-theme="light"] & {
+            &.dark {
+                display: none;
+            }
+
+            &.light {
+                display: flex;
+            }
+        }
+    }
+
+}

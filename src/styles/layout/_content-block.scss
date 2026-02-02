@@ -238,6 +238,7 @@
 }
 
 .swap-section {
+    padding: 52px 0;
 
     &__content {
         @include adaptive-value("padding-top", 230, 80, 1);

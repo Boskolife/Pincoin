@@ -102,13 +102,13 @@
         }
 
         @include media ("<tablet") {
-            height: 205px;
+            @include adaptive-value("height", 320, 210, 1);
         }
 
         img {
             width: 100%;
             height: 100%;
-            object-position: center;
+            object-position:  top center;
 
             @include media ("<tablet") {
                 object-fit: cover;
