@@ -307,7 +307,7 @@ panels.forEach((panel, i) => {
   // Get the window height
   let windowHeight = window.innerHeight;
   
-  let difference = panelHeight - windowHeight;
+  let difference = panelHeight - windowHeight - 1000;
   
   // ratio (between 0 and 1) representing the portion of the overall animation that's for the fake-scrolling. We know that the scale & fade should happen over the course of 1 windowHeight, so we can figure out the ratio based on how far we must fake-scroll
   let fakeScrollRatio = difference > 0 ? (difference / (difference + windowHeight)) : 0;
@@ -330,10 +330,10 @@ panels.forEach((panel, i) => {
   
   // fake scroll. We use 1 because that's what the rest of the timeline consists of (0.9 scale + 0.1 fade)
   if (fakeScrollRatio) {
-    tl.to(innerpanel, {yPercent:-100, y: window.innerHeight, duration: 1 / (1 - fakeScrollRatio) - 1, ease: "none"});
+    tl.to(innerpanel, { y: window.innerHeight, duration: 1 / (1 - fakeScrollRatio) - 1, ease: "none"});
   }
-  tl.fromTo(panel, {scale:1, opacity:1}, {scale: 0.7, opacity: 0.9, duration: 0.9})
-    .to(panel, {opacity:0, duration: 0.1});
+  tl.fromTo(panel, {scale:1, opacity:1}, {scale: 0, opacity: 0, duration: 0.9})
+    .to(panel, { duration: 0.1});
 });
 
 }
