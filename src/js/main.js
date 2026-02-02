@@ -2,7 +2,7 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Register ScrollTrigger plugin
+// Register ScrollTrigger plugin once
 gsap.registerPlugin(ScrollTrigger);
 
 /**
@@ -265,117 +265,131 @@ const ModalPopup = (function () {
     };
 })();
 
-gsap.registerPlugin(ScrollTrigger);
+/**
+ * Swipe Section Module
+ * Handles swipe section scroll animations
+ */
+const SwipeSection = (function () {
+    'use strict';
 
-const swipeSection = document.querySelector('.swipe');
+    /**
+     * Initialize swipe section animation
+     */
+    const init = () => {
+        const swipeSection = document.querySelector('.swipe');
+        
+        if (!swipeSection) {
+            return;
+        }
 
-const tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: '.swipe',
-    start: 'top top',
-    onEnter: () => {
-      // Add active class when trigger enters viewport
-      if (swipeSection) {
-        swipeSection.classList.add('active');
-      }
-    },
-  }
-});
-initWalletScroll() 
-function initWalletScroll() {
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '.swipe',
+                start: 'top top',
+                onEnter: () => {
+                    swipeSection.classList.add('active');
+                },
+            }
+        });
+    };
 
-  gsap.registerPlugin(ScrollTrigger);
+    /**
+     * Public API
+     */
+    return {
+        init
+    };
+})();
 
-var panels = gsap.utils.toArray(".wallet");
-panels.pop();
+/**
+ * Wallet Scroll Module
+ * Handles wallet section scroll animations with pinning and scaling
+ */
+const WalletScroll = (function () {
+    'use strict';
 
-panels.forEach((panel, i) => {
-  
-  // Get the element holding the content inside the panel
-  let innerpanel = panel.querySelector(".wallet .container");
-  
-  // Skip if innerpanel doesn't exist
-  if (!innerpanel) {
-    console.warn(`No .wallet__content found in panel ${i}`);
-    return;
-  }
-  
-  // Get the Height of the content inside the panel
-  let panelHeight = innerpanel.offsetHeight;
-  console.log(panelHeight)
-  
-  // Get the window height
-  let windowHeight = window.innerHeight;
-  
-  let difference = panelHeight - windowHeight - 1000;
-  
-  // ratio (between 0 and 1) representing the portion of the overall animation that's for the fake-scrolling. We know that the scale & fade should happen over the course of 1 windowHeight, so we can figure out the ratio based on how far we must fake-scroll
-  let fakeScrollRatio = difference > 0 ? (difference / (difference + windowHeight)) : 0;
-  
-  // if we need to fake scroll (because the panel is taller than the window), add the appropriate amount of margin to the bottom so that the next element comes in at the proper time.
-  if (fakeScrollRatio) {
-    panel.style.marginBottom = panelHeight * fakeScrollRatio + "px";
-  }
-  
-  let tl = gsap.timeline({
-    scrollTrigger:{
-      trigger: panel,
-      start: "bottom bottom",
-      end: () => fakeScrollRatio ? `+=${innerpanel.offsetHeight}` : "bottom top",
-      pinSpacing: false,
-      pin: true,
-      scrub: true
-    }
-  });
-  
-  // fake scroll. We use 1 because that's what the rest of the timeline consists of (0.9 scale + 0.1 fade)
-  if (fakeScrollRatio) {
-    tl.to(innerpanel, { y: window.innerHeight, duration: 1 / (1 - fakeScrollRatio) - 1, ease: "none"});
-  }
-  tl.fromTo(panel, {scale:1, opacity:1}, {scale: 0, opacity: 0, duration: 0.9})
-    .to(panel, { duration: 0.1});
-});
+    /**
+     * Initialize wallet scroll animations
+     */
+    const init = () => {
+        const panels = gsap.utils.toArray('.wallet');
+        
+        if (panels.length === 0) {
+            return;
+        }
 
-}
+        // Remove last panel from animation (if needed)
+        const panelsToAnimate = panels.slice(0, -1);
 
-// gsap.registerPlugin(ScrollTrigger);
+        panelsToAnimate.forEach((panel, i) => {
+            // Get the element holding the content inside the panel
+            const innerPanel = panel.querySelector('.wallet .container');
+            
+            // Skip if innerPanel doesn't exist
+            if (!innerPanel) {
+                console.warn(`No .wallet .container found in panel ${i}`);
+                return;
+            }
+            
+            // Get the height of the content inside the panel
+            const panelHeight = innerPanel.offsetHeight;
+            
+            // Get the window height
+            const windowHeight = window.innerHeight;
+            
+            // Calculate difference for fake scroll
+            const difference = panelHeight - windowHeight - 1000;
+            
+            // Ratio (between 0 and 1) representing the portion of the overall animation 
+            // that's for the fake-scrolling. We know that the scale & fade should happen 
+            // over the course of 1 windowHeight, so we can figure out the ratio based 
+            // on how far we must fake-scroll
+            const fakeScrollRatio = difference > 0 ? (difference / (difference + windowHeight)) : 0;
+            
+            // If we need to fake scroll (because the panel is taller than the window), 
+            // add the appropriate amount of margin to the bottom so that the next element 
+            // comes in at the proper time.
+            // Note: Using inline style here is necessary for dynamic margin calculation
+            if (fakeScrollRatio) {
+                const marginBottom = panelHeight * fakeScrollRatio;
+                panel.style.marginBottom = `${marginBottom}px`;
+            }
+            
+            const timeline = gsap.timeline({
+                scrollTrigger: {
+                    trigger: panel,
+                    start: 'bottom bottom',
+                    end: () => fakeScrollRatio ? `+=${innerPanel.offsetHeight}` : 'bottom top',
+                    pinSpacing: false,
+                    pin: true,
+                    scrub: true
+                }
+            });
+            
+            // Fake scroll. We use 1 because that's what the rest of the timeline consists of 
+            // (0.9 scale + 0.1 fade)
+            if (fakeScrollRatio) {
+                timeline.to(innerPanel, { 
+                    y: window.innerHeight, 
+                    duration: 1 / (1 - fakeScrollRatio) - 1, 
+                    ease: 'none'
+                });
+            }
+            
+            timeline.fromTo(panel, 
+                { scale: 1, opacity: 1 }, 
+                { scale: 0, opacity: 0, duration: 0.9 }
+            ).to(panel, { duration: 0.1 });
+        });
+    };
 
-// const cards = gsap.utils.toArray('.swipe__img');
-
-// // Individual rotation angles for each card (in degrees)
-// // Index corresponds to card index (0 = first card, 1 = second card, etc.)
-// const cardRotations = [
-//   6,   // First card rotation (stays at 0)
-//   -3.6,   // Second card rotation
-//   15   // Third card rotation
-// ];
-
-// // Animation speed multiplier - lower value = faster animation (less scroll distance)
-// const scrollSpeed = 0.5; // 0.5 = 50% of original scroll distance (faster)
-
-// const tl = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: '.swipe__content',
-//     start: 'top top+=50px ',
-//     end: `+=${(cards.length - 1) * 100 * scrollSpeed}%`,
-//     scrub: true,
-//     pin: '.swipe__content',
-//     markers: true
-//   }
-// });
-
-// cards.forEach((card, index) => {
-//   // First card stays at yPercent: 0, others move further down
-//   const yPercent = index === 0 ? 0 : 70 * index;
-//   // Get individual rotation for this card
-//   const rotation = cardRotations[index] || 0;
-//   tl.fromTo(card,
-//     { yPercent: 0, rotation: 0 },
-//     { yPercent: yPercent, rotation: rotation, ease: 'none', duration: 0.1 }
-//   );
-// });
-
-
+    /**
+     * Public API
+     */
+    return {
+        init
+    };
+})();
 
 /**
  * Initialize all modules when DOM is ready
@@ -384,8 +398,9 @@ const initApp = () => {
     ThemeSwitcher.init();
     ThemeSwitcher.setupEventListeners();
     ModalPopup.setupEventListeners();
+    SwipeSection.init();
+    WalletScroll.init();
 };
-
 
 // Initialize app when DOM is ready
 if (document.readyState === 'loading') {
