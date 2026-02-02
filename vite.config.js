@@ -51,6 +51,8 @@ export default defineConfig({
     handlebarsReloadPlugin(),
   ],
   server: {
+    port: 3000,
+    host: true,
     watch: {
       // Ensure all HTML files are watched
       ignored: []

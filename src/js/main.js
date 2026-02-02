@@ -1,3 +1,10 @@
+// Import GSAP and ScrollTrigger
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+
 /**
  * Theme Switcher Module
  * Handles dark/light theme switching functionality
@@ -258,6 +265,62 @@ const ModalPopup = (function () {
     };
 })();
 
+gsap.registerPlugin(ScrollTrigger);
+
+const swipeSection = document.querySelector('.swipe');
+
+const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.swipe',
+    start: 'top top',
+    onEnter: () => {
+      // Add active class when trigger enters viewport
+      if (swipeSection) {
+        swipeSection.classList.add('active');
+      }
+    },
+  }
+});
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// const cards = gsap.utils.toArray('.swipe__img');
+
+// // Individual rotation angles for each card (in degrees)
+// // Index corresponds to card index (0 = first card, 1 = second card, etc.)
+// const cardRotations = [
+//   6,   // First card rotation (stays at 0)
+//   -3.6,   // Second card rotation
+//   15   // Third card rotation
+// ];
+
+// // Animation speed multiplier - lower value = faster animation (less scroll distance)
+// const scrollSpeed = 0.5; // 0.5 = 50% of original scroll distance (faster)
+
+// const tl = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: '.swipe__content',
+//     start: 'top top+=50px ',
+//     end: `+=${(cards.length - 1) * 100 * scrollSpeed}%`,
+//     scrub: true,
+//     pin: '.swipe__content',
+//     markers: true
+//   }
+// });
+
+// cards.forEach((card, index) => {
+//   // First card stays at yPercent: 0, others move further down
+//   const yPercent = index === 0 ? 0 : 70 * index;
+//   // Get individual rotation for this card
+//   const rotation = cardRotations[index] || 0;
+//   tl.fromTo(card,
+//     { yPercent: 0, rotation: 0 },
+//     { yPercent: yPercent, rotation: rotation, ease: 'none', duration: 0.1 }
+//   );
+// });
+
+
+
 /**
  * Initialize all modules when DOM is ready
  */
@@ -266,6 +329,7 @@ const initApp = () => {
     ThemeSwitcher.setupEventListeners();
     ModalPopup.setupEventListeners();
 };
+
 
 // Initialize app when DOM is ready
 if (document.readyState === 'loading') {

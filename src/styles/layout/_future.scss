@@ -55,9 +55,34 @@
             max-width: 1070px;
             width: 100%;
 
+
             @include media ("<tablet") {
                 height: 190px;
                 top: 45%;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                z-index: -1;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 40%;
+                height: 50%;
+                border-radius: 50%;
+                background: rgba(193, 54, 243, 1);
+                filter: blur(40px);
+
+                @include media ("<tablet") {
+                    width: 55%;
+                    height: 55%;
+                    filter: blur(20px);
+                }
+
+                [data-theme="light"] & {
+                    display: none;
+                }
             }
 
             &.light {
