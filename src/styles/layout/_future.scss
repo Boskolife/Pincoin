@@ -4,7 +4,7 @@
 
     @include media ("<tablet") {
         padding: 75px 0 95px 0;
-    } 
+    }
 
     &::after {
         content: '';
@@ -24,13 +24,27 @@
     }
 
     &__img {
-        display: block;
 
         &.img-1 {
+            display: block;
             @include adaptive-value("max-width", 490, 200, 1);
             width: 100%;
             margin: 0 auto;
             @include adaptive-value("margin-bottom", 220, 110, 1);
+
+            &.light {
+                display: none;
+            }
+
+            [data-theme="light"] & {
+                &.dark {
+                    display: none;
+                }
+
+                &.light {
+                    display: block;
+                }
+            }
         }
 
         &.img-2 {
@@ -44,6 +58,20 @@
             @include media ("<tablet") {
                 height: 190px;
                 top: 45%;
+            }
+
+            &.light {
+                display: none;
+            }
+
+            [data-theme="light"] & {
+                &.dark {
+                    display: none;
+                }
+
+                &.light {
+                    display: block;
+                }
             }
 
             img {
@@ -96,6 +124,7 @@
             border: none;
             box-shadow: 0px 4px 23.2px 0px #FA5EB582;
             letter-spacing: -0.03em;
+
             span {
                 display: none;
             }
