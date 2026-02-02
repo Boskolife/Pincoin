@@ -1,15 +1,21 @@
 .footer {
     padding: 15px 0;
+
     &__content {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
         gap: 28px;
+
+        @include media ("<tablet") {
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
     }
 
     &__logo {
-        width: 56px;
-        height: 56px;
+        width: 53px;
+        height: 53px;
         border-radius: 50%;
         background: #FFFFFF14;
         padding: 5px;
@@ -19,11 +25,16 @@
         position: relative;
         box-shadow: 0px 4px 6px 0px #4C146814;
 
-        // @include media ("<phone") {
-        //     order: 2;
-        //     width: 44px;
-        //     height: 44px;
-        // }
+        @include media ("<tablet") {
+            order: 1;
+            width: 75px;
+            height: 75px;
+        }
+
+        img{
+            width: 55%;
+            height: 55%;
+        }
 
         &::before {
             content: '';
@@ -45,6 +56,11 @@
         width: 100%;
         margin: 0 auto;
 
+        @include media ("<tablet") {
+            order: 3;
+            max-width: 110px;
+        }
+
         &.light {
             display: none;
         }
@@ -65,5 +81,17 @@
         display: flex;
         align-items: center;
         gap: 6px;
+
+        @include media ("<tablet") {
+            margin: 0 auto;
+            order: 2;
+            gap: 31px;
+        }
     }
+
+    &__social-link {
+        width: 47px;
+        height: 47px;
+    }
+
 }
