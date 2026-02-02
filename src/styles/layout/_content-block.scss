@@ -49,6 +49,11 @@
 }
 
 .finally {
+    padding: 50px 0;
+
+    @include media ("<tablet") {
+        padding: 25px 0;
+    }
 
     &__icon {
         position: absolute;
