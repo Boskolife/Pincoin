@@ -397,6 +397,10 @@
             &.dark {
                 display: none;
             }
+
+            &.light {
+                display: block;
+            }
         }
         img {
             width: 100%;
