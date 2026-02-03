@@ -17,6 +17,8 @@
         }
     }
 
+
+
     &__text {
         position: relative;
         z-index: 1;
@@ -199,10 +201,35 @@
 
 .cards-middle {
 
+    @include media ("<tablet") {
+        padding: 50px 0;
+    }
+
     &__content {
         display: flex;
         flex-wrap: wrap;
         gap: 24px;
+
+        @include media ("<tablet") {
+            flex-direction: column;
+        }
+    }
+
+    &__img {
+
+        &.light {
+            display: none !important;
+        }
+
+        [data-theme="light"] & {
+            &.dark {
+                display: none !important;
+            }
+
+            &.light {
+                display: block !important;
+            }
+        }
     }
 
     &__item {
@@ -226,7 +253,7 @@
                 right: 50%;
                 transform: translateX(50%);
                 max-width: 535px;
-                width: 100%;
+
                 height: auto;
                 object-fit: cover;
                 object-position: center;
@@ -245,10 +272,11 @@
                     height: 316px;
 
                     @include media ("<tablet") {
-                        bottom: 20%;
-                        filter: blur(65px);
-                        width: 200px;
+                        bottom: 40%;
+                        filter: blur(35px);
+                        width: 180px;
                         height: 160px;
+
                     }
 
                     [data-theme="light"] & {
@@ -258,8 +286,8 @@
 
                 @include media ("<tablet") {
                     max-width: 95%;
-                    width: 100%;
-                    bottom: 10%;
+                    width: 50%;
+                    bottom: 15%;
 
                     &::after {
                         content: '';
@@ -275,6 +303,16 @@
                             background: linear-gradient(0deg, #FFFFFF 49.42%, rgba(255, 255, 255, 0.7) 58.41%, rgba(255, 255, 255, 0) 80.85%);
                         }
                     }
+                }
+
+                @include media ("<phone") {
+                    max-width: 70%;
+                    width: 100%;
+                }
+
+                @include media ("<410px") {
+                    max-width: 95%;
+                    bottom: 10%;
                 }
             }
 
@@ -299,6 +337,10 @@
                 flex: auto;
                 height: 452px;
                 text-align: center;
+                padding-bottom: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
 
             .cards-middle__img {
@@ -309,18 +351,19 @@
                 max-width: 546px;
                 width: 100%;
                 height: auto;
-                object-fit: cover;
-                object-position: center;
 
                 @include media ("<tablet") {
-                    max-width: 95%;
+                    display: block;
+                    transform: none;
+                    position: static;
+                    margin-top: auto;
                 }
             }
 
             .cards-middle__text {
 
                 &.top-text {
-                    @include media ("<tablet") {
+                    @include media ("<phone") {
                         max-width: 177px;
                         width: 100%;
                         margin: 0 auto 4px auto;
@@ -332,8 +375,11 @@
                     width: 100%;
 
                     @include media ("<tablet") {
-                        max-width: 283px;
                         margin: 0 auto;
+                    }
+
+                    @include media ("<phone") {
+                        max-width: 283px;
                     }
                 }
             }
@@ -366,8 +412,7 @@
 
                 @include media ("<tablet") {
                     max-width: 91%;
-                    width: 100%;
-                    bottom: 4%;
+                    width: 50%;
 
                     &::after {
                         content: '';
@@ -382,6 +427,10 @@
                             background: linear-gradient(0deg, #FFFFFF 49.42%, rgba(255, 255, 255, 0.7) 58.41%, rgba(255, 255, 255, 0) 80.85%);
                         }
                     }
+                }
+
+                @include media ("<phone") {
+                    width: 100%;
                 }
 
                 &::before {
@@ -414,13 +463,13 @@
                 position: relative;
                 z-index: 2;
 
-
-
                 &.bottom-text {
                     max-width: 410px;
 
+
                     @include media ("<tablet") {
                         padding: 0 25px;
+                        margin: 0 auto;
                     }
                 }
             }
@@ -429,12 +478,42 @@
         &:nth-child(4) {
             flex: 1 1 530px;
             height: 424px;
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: 0%;
+                right: 50%;
+                transform: translateX(50%);
+                background: #C136F39C;
+                filter: blur(200px);
+                border-radius: 50%;
+                width: 316px;
+                height: 316px;
+
+                @include media ("<tablet") {
+                    bottom: 30%;
+                    filter: blur(85px);
+                    width: 200px;
+                    height: 200px;
+                }
+
+                [data-theme="light"] & {
+                    display: none;
+                }
+            }
 
 
             @include media ("<tablet") {
                 flex: auto;
                 height: 452px;
                 text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: auto;
+                padding-bottom: 0;
             }
 
             .cards-middle__img {
@@ -445,37 +524,23 @@
                 max-width: 303px;
                 width: 100%;
                 height: auto;
-                object-fit: cover;
-                object-position: center;
 
-
-                &::before {
-                    content: '';
-                    position: absolute;
-                    z-index: -1;
-                    bottom: -1%;
-                    right: 50%;
-                    transform: translateX(50%);
-                    background: #C136F39C;
-                    filter: blur(200px);
-                    border-radius: 50%;
-                    width: 316px;
-                    height: 316px;
-
-                    @include media ("<tablet") {
-                        bottom: 30%;
-                        filter: blur(85px);
-                        width: 200px;
-                        height: 200px;
-                    }
-
-                    [data-theme="light"] & {
-                        display: none;
-                    }
+                @include media ("<=tablet") {
+                    display: block;
+                    width: 100%;
+                    bottom: auto;
+                    right: auto;
+                    transform: none;
+                    margin-top: auto;
+                    max-width: 280px;
+                    position: relative;
                 }
+
+             
             }
 
             .cards-middle__text {
+
                 &.bottom-text {
                     max-width: 424px;
 
