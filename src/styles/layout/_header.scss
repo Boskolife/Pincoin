@@ -1,8 +1,12 @@
 .header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
     padding: 20px 0;
     transition: var(--transition-speed);
 
-    .container{
+    .container {
         max-width: 1388px;
         padding: 0 14px;
     }
@@ -18,6 +22,17 @@
         box-shadow: 0px 2px 20px 0px #0000001A;
     }
 
+    &__logo-track {
+        position: relative;
+        flex: 1;
+        height: 56px;
+        margin-right: 10px;
+
+        @include media ("<phone") {
+            height: 44px;
+        }
+    }
+
     &__logo {
         width: 56px;
         height: 56px;
@@ -27,8 +42,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        position: relative;
+        position: absolute;
+        left: 0;
+        top: 0;
         box-shadow: 0px 4px 6px 0px #4C146814;
+        will-change: transform;
 
         @include media ("<phone") {
             order: 2;
@@ -59,6 +77,7 @@
     }
 
     &__menu-button {
+        min-width: 150px;
         padding: 14px 24px;
         background-color: var(--color-btn-bg);
         color: $white-text;
@@ -85,29 +104,27 @@
         @include media ("<phone") {
             order: 3;
             height: 44px;
+            min-width: 110px;
         }
     }
 
     &__theme-switcher {
         position: relative;
+        min-width: 87px;
         width: 87px;
         height: 50px;
         padding: 8px;
         background: linear-gradient(98.09deg, rgba(250, 94, 181, 0.5) 18.04%, rgba(134, 16, 225, 0.5) 100%);
         border-radius: 100px;
+        outline: none;
+        border: none;
+        cursor: pointer;
 
         @include media ("<phone") {
             order: 1;
             padding: 6px 7px;
             height: 44px;
         }
-    }
-
-    &__theme-toggle {
-        position: absolute;
-        opacity: 0;
-        width: 0;
-        height: 0;
     }
 
     &__theme-switcher-label {
@@ -139,7 +156,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: opacity 0.3s ease-in-out;
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 
         img {
             width: 100%;
@@ -148,38 +165,45 @@
         }
 
         &--moon {
-            opacity: 1; // Dark theme is default (checked)
+            opacity: 1;
         }
 
         &--sun {
-            opacity: 0; // Hidden by default
-        }
-    }
-
-    // When dark theme is active (checkbox checked) - button on the left, moon visible
-    &__theme-toggle:checked+&__theme-switcher-label {
-        // Button stays on the left (default position)
-        transform: translateY(-50%);
-
-        .header__theme-switcher-icon--moon {
-            opacity: 1;
-        }
-
-        .header__theme-switcher-icon--sun {
             opacity: 0;
         }
     }
 
-    // When light theme is active (checkbox unchecked) - button on the right, sun visible
-    &__theme-toggle:not(:checked)+&__theme-switcher-label {
-        transform: translateY(-50%) translateX(calc(87px - 34px - 16px)); // Move to right: container width - button width - padding left - padding right
+    // When dark theme is active - button on the left, moon visible
+    [data-theme="dark"] &__theme-switcher-label {
+        transform: translateY(-50%) translateX(0);
+
+        .header__theme-switcher-icon--moon {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        .header__theme-switcher-icon--sun {
+            opacity: 0;
+            transform: scale(0.8) rotate(-90deg);
+        }
+    }
+
+    // When light theme is active - button on the right, sun visible
+    [data-theme="light"] &__theme-switcher-label {
+        transform: translateY(-50%) translateX(calc(87px - 34px - 16px));
+
+        @include media ("<phone") {
+            transform: translateY(-50%) translateX(calc(87px - 30px - 14px));
+        }
 
         .header__theme-switcher-icon--moon {
             opacity: 0;
+            transform: scale(0.8) rotate(90deg);
         }
 
         .header__theme-switcher-icon--sun {
             opacity: 1;
+            transform: scale(1) rotate(0deg);
         }
     }
 }

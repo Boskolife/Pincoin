@@ -31,9 +31,10 @@ const ThemeSwitcher = (function () {
     const setTheme = (theme) => {
         htmlElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
-        
+
+        // Update button aria-pressed state for accessibility
         if (themeToggle) {
-            themeToggle.checked = theme === 'dark';
+            themeToggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
         }
 
         // Update iOS status bar style
@@ -54,11 +55,13 @@ const ThemeSwitcher = (function () {
     };
 
     /**
-     * Handle theme toggle change event
-     * @param {Event} e - Change event
+     * Handle theme toggle click event
+     * @param {Event} e - Click event
      */
     const handleToggle = (e) => {
-        const newTheme = e.target.checked ? 'dark' : 'light';
+        e.preventDefault();
+        const currentTheme = getSavedTheme();
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         setTheme(newTheme);
     };
 
@@ -67,7 +70,7 @@ const ThemeSwitcher = (function () {
      */
     const setupEventListeners = () => {
         if (themeToggle) {
-            themeToggle.addEventListener('change', handleToggle);
+            themeToggle.addEventListener('click', handleToggle);
         }
     };
 
@@ -392,6 +395,79 @@ const WalletScroll = (function () {
 })();
 
 /**
+ * Logo Scroll Animation Module
+ * Handles logo movement based on scroll progress
+ */
+const LogoScrollAnimation = (function () {
+    'use strict';
+
+    /**
+     * Initialize logo scroll animation
+     */
+    const init = () => {
+        const logoTrack = document.querySelector('.header__logo-track');
+        const logo = document.querySelector('.header__logo');
+        const headerInner = document.querySelector('.header__inner');
+        
+        if (!logoTrack || !logo || !headerInner) {
+            return;
+        }
+
+        let scrollTriggerInstance = null;
+
+        // Function to calculate and update animation
+        const updateAnimation = () => {
+            // Kill existing ScrollTrigger if any
+            if (scrollTriggerInstance) {
+                scrollTriggerInstance.kill();
+                scrollTriggerInstance = null;
+            }
+
+            // Calculate maximum movement distance based on track width
+            const trackWidth = logoTrack.offsetWidth;
+            const logoWidth = logo.offsetWidth;
+            const maxMovement = Math.max(0, trackWidth - logoWidth);
+
+            // Create animation based on scroll progress
+            const animation = gsap.to(logo, {
+                x: maxMovement,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: 'body',
+                    start: 'top top',
+                    end: 'bottom bottom',
+                    scrub: true
+                }
+            });
+
+            // Store ScrollTrigger instance for cleanup
+            scrollTriggerInstance = animation.scrollTrigger;
+        };
+
+        // Initialize animation after a short delay to ensure layout is ready
+        setTimeout(() => {
+            updateAnimation();
+        }, 100);
+
+        // Update on window resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                updateAnimation();
+            }, 250);
+        });
+    };
+
+    /**
+     * Public API
+     */
+    return {
+        init
+    };
+})();
+
+/**
  * Initialize all modules when DOM is ready
  */
 const initApp = () => {
@@ -400,6 +476,7 @@ const initApp = () => {
     ModalPopup.setupEventListeners();
     SwipeSection.init();
     WalletScroll.init();
+    LogoScrollAnimation.init();
 };
 
 // Initialize app when DOM is ready
