@@ -79,6 +79,13 @@
         font-weight: 500;
         line-height: 120%;
         color: $gray;
+        
+        @include media ("<phone") {
+            max-width: 315px;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
     }
 
     &__img {

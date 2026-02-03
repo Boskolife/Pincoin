@@ -142,8 +142,8 @@
     padding: 60px 0;
     position: relative;
 
-    @include media ("<tablet") {
-        height: 100vh !important;
+    @include media ("<phone") {
+        padding: 80px 0;
     }
 
     &::before {
@@ -248,7 +248,7 @@
 
     &__text {
         &.top-text {
-            @include adaptive-value("font-size", 26, 18, 1);
+            @include adaptive-value("font-size", 26, 18, 1); 
             font-weight: 600;
             line-height: 120%;
             text-align: center;
@@ -260,6 +260,10 @@
 
             [data-theme="light"] & {
                 color: $black-text;
+            }
+
+            @include media ("<phone") {
+                max-width: 330px
             }
         }
 
@@ -273,6 +277,10 @@
             max-width: 755px;
             width: 100%;
             margin: 0 auto;
+
+            @include media ("<phone") {
+                max-width: 350px;
+            }
         }
     }
 }
