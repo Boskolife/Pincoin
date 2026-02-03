@@ -95,7 +95,6 @@ const ModalPopup = (function () {
     const waitlistPopup = document.getElementById('waitlist-popup');
     const donePopup = document.getElementById('done-popup');
     const popupOverlay = document.getElementById('popup-overlay');
-    const joinWaitlistButton = document.querySelector('.header__menu-button');
     const waitlistForm = document.querySelector('#waitlist-popup .popup__form');
 
     /**
@@ -226,10 +225,11 @@ const ModalPopup = (function () {
      * Setup event listeners for popups
      */
     const setupEventListeners = () => {
-        // Join waitlist button
-        if (joinWaitlistButton) {
-            joinWaitlistButton.addEventListener('click', handleJoinWaitlistClick);
-        }
+        // Find and attach click handlers to all "Join Waitlist" buttons
+        const joinWaitlistButtons = document.querySelectorAll('[data-join-waitlist]');
+        joinWaitlistButtons.forEach((button) => {
+            button.addEventListener('click', handleJoinWaitlistClick);
+        });
 
         // Close buttons
         const closeButtons = document.querySelectorAll('.popup__close');
