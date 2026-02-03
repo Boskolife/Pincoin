@@ -1,7 +1,8 @@
 // Import GSAP and ScrollTrigger
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import WOW from 'wow.js';
+new WOW().init();
 // Register ScrollTrigger plugin once
 gsap.registerPlugin(ScrollTrigger);
 
@@ -467,6 +468,74 @@ const LogoScrollAnimation = (function () {
     };
 })();
 
+const MeetSection = (function () {
+    'use strict';
+
+    /**
+     * Initialize meet section animation
+     */
+    const init = () => {
+        const meetSection = document.querySelector('.meet');
+        const meetTextElements = document.querySelectorAll('.meet__text');
+        
+        if (!meetSection || meetTextElements.length === 0) {
+            return;
+        }
+
+        // Add wow classes with delays to each text element
+        meetTextElements.forEach((text, index) => {
+            if (!text.classList.contains('wow')) {
+                text.classList.add('wow');
+            }
+            text.classList.add(`wow-delay-${index * 0.1}s`);
+        });
+
+        // Helper function to add animation classes to all text elements
+        const addAnimationClasses = () => {
+            meetTextElements.forEach((text) => {
+                text.classList.add('animate__animated', 'animate__fadeInUp');
+            });
+        };
+
+        // Helper function to remove animation classes from all text elements
+        const removeAnimationClasses = () => {
+            meetTextElements.forEach((text) => {
+                text.classList.remove('animate__animated', 'animate__fadeInUp');
+            });
+        };
+
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: ".meet__img",
+                start: 'bottom bottom',
+                onEnter: () => {
+                    meetSection.classList.add('active');
+                    addAnimationClasses();
+                },
+                onLeave: () => {
+                    meetSection.classList.remove('active');
+                    removeAnimationClasses();
+                },
+                onEnterBack: () => {
+                    meetSection.classList.add('active');
+                    addAnimationClasses();
+                },
+                onLeaveBack: () => {
+                    meetSection.classList.remove('active');
+                    removeAnimationClasses();
+                }
+            }
+        });
+    };
+
+    /**
+     * Public API
+     */
+    return {
+        init
+    };
+})();
+
 /**
  * Initialize all modules when DOM is ready
  */
@@ -476,12 +545,15 @@ const initApp = () => {
     ModalPopup.setupEventListeners();
     SwipeSection.init();
     WalletScroll.init();
-    LogoScrollAnimation.init();
+    MeetSection.init();
+    if(window.innerWidth > 480) {LogoScrollAnimation.init();}
 };
 
 // Initialize app when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initApp);
+    window.addEventListener('resize', initApp);
 } else {
     initApp();
+    window.addEventListener('resize', initApp);
 }

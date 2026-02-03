@@ -14,6 +14,7 @@
     &__inner {
         display: flex;
         justify-content: space-between;
+        gap: 10px;
         align-items: center;
         background-color: var(--color-bg-secondary);
         border-radius: 9999px;
@@ -30,6 +31,10 @@
 
         @include media ("<phone") {
             height: 44px;
+            width: 44px;
+            order: 2;
+            margin: 0 auto;
+            flex: 0 1 auto;
         }
     }
 
@@ -49,7 +54,6 @@
         will-change: transform;
 
         @include media ("<phone") {
-            order: 2;
             width: 44px;
             height: 44px;
         }

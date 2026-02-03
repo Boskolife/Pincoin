@@ -22,6 +22,8 @@
     "vite-plugin-handlebars": "^1.6.0"
   },
   "dependencies": {
-    "gsap": "^3.14.2"
+    "animate.css": "^4.1.1",
+    "gsap": "^3.14.2",
+    "wow.js": "^1.2.2"
   }
 }
