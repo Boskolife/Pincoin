@@ -309,91 +309,91 @@ const SwipeSection = (function () {
  * Wallet Scroll Module
  * Handles wallet section scroll animations with pinning and scaling
  */
-const WalletScroll = (function () {
-    'use strict';
+// const WalletScroll = (function () {
+//     'use strict';
 
-    /**
-     * Initialize wallet scroll animations
-     */
-    const init = () => {
-        const panels = gsap.utils.toArray('.wallet');
+//     /**
+//      * Initialize wallet scroll animations
+//      */
+//     const init = () => {
+//         const panels = gsap.utils.toArray('.wallet');
         
-        if (panels.length === 0) {
-            return;
-        }
+//         if (panels.length === 0) {
+//             return;
+//         }
 
-        // Remove last panel from animation (if needed)
-        const panelsToAnimate = panels.slice(0, -1);
+//         // Remove last panel from animation (if needed)
+//         const panelsToAnimate = panels.slice(0, -1);
 
-        panelsToAnimate.forEach((panel, i) => {
-            // Get the element holding the content inside the panel
-            const innerPanel = panel.querySelector('.wallet .container');
+//         panelsToAnimate.forEach((panel, i) => {
+//             // Get the element holding the content inside the panel
+//             const innerPanel = panel.querySelector('.wallet .container');
             
-            // Skip if innerPanel doesn't exist
-            if (!innerPanel) {
-                console.warn(`No .wallet .container found in panel ${i}`);
-                return;
-            }
+//             // Skip if innerPanel doesn't exist
+//             if (!innerPanel) {
+//                 console.warn(`No .wallet .container found in panel ${i}`);
+//                 return;
+//             }
             
-            // Get the height of the content inside the panel
-            const panelHeight = innerPanel.offsetHeight;
+//             // Get the height of the content inside the panel
+//             const panelHeight = innerPanel.offsetHeight;
             
-            // Get the window height
-            const windowHeight = window.innerHeight;
+//             // Get the window height
+//             const windowHeight = window.innerHeight;
             
-            // Calculate difference for fake scroll
-            const difference = panelHeight - windowHeight - 1000;
+//             // Calculate difference for fake scroll
+//             const difference = panelHeight - windowHeight - 1000;
             
-            // Ratio (between 0 and 1) representing the portion of the overall animation 
-            // that's for the fake-scrolling. We know that the scale & fade should happen 
-            // over the course of 1 windowHeight, so we can figure out the ratio based 
-            // on how far we must fake-scroll
-            const fakeScrollRatio = difference > 0 ? (difference / (difference + windowHeight)) : 0;
+//             // Ratio (between 0 and 1) representing the portion of the overall animation 
+//             // that's for the fake-scrolling. We know that the scale & fade should happen 
+//             // over the course of 1 windowHeight, so we can figure out the ratio based 
+//             // on how far we must fake-scroll
+//             const fakeScrollRatio = difference > 0 ? (difference / (difference + windowHeight)) : 0;
             
-            // If we need to fake scroll (because the panel is taller than the window), 
-            // add the appropriate amount of margin to the bottom so that the next element 
-            // comes in at the proper time.
-            // Note: Using inline style here is necessary for dynamic margin calculation
-            if (fakeScrollRatio) {
-                const marginBottom = panelHeight * fakeScrollRatio;
-                panel.style.marginBottom = `${marginBottom}px`;
-            }
+//             // If we need to fake scroll (because the panel is taller than the window), 
+//             // add the appropriate amount of margin to the bottom so that the next element 
+//             // comes in at the proper time.
+//             // Note: Using inline style here is necessary for dynamic margin calculation
+//             if (fakeScrollRatio) {
+//                 const marginBottom = panelHeight * fakeScrollRatio;
+//                 panel.style.marginBottom = `${marginBottom}px`;
+//             }
             
-            const timeline = gsap.timeline({
-                scrollTrigger: {
-                    trigger: panel,
-                    start: 'bottom bottom',
-                    end: () => fakeScrollRatio ? `+=${innerPanel.offsetHeight}` : 'bottom top',
-                    pinSpacing: false,
-                    pin: true,
-                    scrub: true
-                }
-            });
+//             const timeline = gsap.timeline({
+//                 scrollTrigger: {
+//                     trigger: panel,
+//                     start: 'bottom bottom',
+//                     end: () => fakeScrollRatio ? `+=${innerPanel.offsetHeight}` : 'bottom top',
+//                     pinSpacing: false,
+//                     pin: true,
+//                     scrub: true
+//                 }
+//             });
             
-            // Fake scroll. We use 1 because that's what the rest of the timeline consists of 
-            // (0.9 scale + 0.1 fade)
-            if (fakeScrollRatio) {
-                timeline.to(innerPanel, { 
-                    y: window.innerHeight, 
-                    duration: 1 / (1 - fakeScrollRatio) - 1, 
-                    ease: 'none'
-                });
-            }
+//             // Fake scroll. We use 1 because that's what the rest of the timeline consists of 
+//             // (0.9 scale + 0.1 fade)
+//             if (fakeScrollRatio) {
+//                 timeline.to(innerPanel, { 
+//                     y: window.innerHeight, 
+//                     duration: 1 / (1 - fakeScrollRatio) - 1, 
+//                     ease: 'none'
+//                 });
+//             }
             
-            timeline.fromTo(panel, 
-                { scale: 1, opacity: 1 }, 
-                { scale: 0, opacity: 0, duration: 0.9 }
-            ).to(panel, { duration: 0.1 });
-        });
-    };
+//             timeline.fromTo(panel, 
+//                 { scale: 1, opacity: 1 }, 
+//                 { scale: 0, opacity: 0, duration: 0.9 }
+//             ).to(panel, { duration: 0.1 });
+//         });
+//     };
 
-    /**
-     * Public API
-     */
-    return {
-        init
-    };
-})();
+//     /**
+//      * Public API
+//      */
+//     return {
+//         init
+//     };
+// })();
 
 /**
  * Logo Scroll Animation Module
@@ -544,7 +544,7 @@ const initApp = () => {
     ThemeSwitcher.setupEventListeners();
     ModalPopup.setupEventListeners();
     SwipeSection.init();
-    WalletScroll.init();
+    // WalletScroll.init();
     MeetSection.init();
     if(window.innerWidth > 480) {LogoScrollAnimation.init();}
 };
