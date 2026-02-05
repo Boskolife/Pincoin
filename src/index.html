@@ -15,34 +15,36 @@
 
 <body>
   {{> header }}
-  <main class="main">
-    {{> section-hero }}
-    {{> section-launch }}
-    {{> section-finally }}
-    {{> sections-wallet }}
-    {{> section-mention }}
-    {{> short-section }}
-    {{> section-fees}}
-    {{> section-cards-top}}
-    {{> section-magic}}
-    {{> swap-section }}
-    {{> section-cards-middle}}
-    {{> section-feed}}
-    {{> section-meet}}
-    {{> section-ask}}
-    {{> section-smart}}
-    {{> section-simple}}
-    {{> section-swipe }}
-    {{> section-cards-bottom}}
-    {{> checkout-section }}
-    {{> section-ready}}
-    {{> section-promise }}
-    {{> section-future }}
-  </main>
-  {{> waitlist-popoup }}
-  {{> done-popoup }}
-  <div class="popup-overlay" id="popup-overlay"></div>
-  {{> footer }}
+  <div id="wrapper">
+    <main class="main">
+      {{> section-hero }}
+      {{> section-launch }}
+      {{> section-finally }}
+      {{> sections-wallet }}
+      {{> section-mention }}
+      {{> short-section }}
+      {{> section-fees}}
+      {{> section-cards-top}}
+      {{> section-magic}}
+      {{> swap-section }}
+      {{> section-cards-middle}}
+      {{> section-feed}}
+      {{> section-meet}}
+      {{> section-ask}}
+      {{> section-smart}}
+      {{> section-simple}}
+      {{> section-swipe }}
+      {{> section-cards-bottom}}
+      {{> checkout-section }}
+      {{> section-ready}}
+      {{> section-promise }}
+      {{> section-future }}
+    </main>
+    {{> waitlist-popoup }}
+    {{> done-popoup }}
+    <div class="popup-overlay" id="popup-overlay"></div>
+    {{> footer }}
+  </div>
   <script type="module" src="/js/main.js"></script>
 </body>
 

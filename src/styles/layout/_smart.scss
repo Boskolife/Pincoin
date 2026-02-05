@@ -101,5 +101,13 @@
         @include media ("<tablet") {
             max-width: 285px;
         }
+
+        br{
+            display: none;
+
+            @include media ("<phone") {
+                display: block;
+            }
+        }
     }
 }

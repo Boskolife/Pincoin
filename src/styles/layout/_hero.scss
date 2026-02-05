@@ -21,6 +21,10 @@
             background: #C136F39C;
             filter: blur(634px);
             z-index: -1;
+
+            [data-theme="light"] & {
+                display: none;
+            }
         }
     }
 
@@ -73,7 +77,7 @@
             box-shadow: 0px 0px 3px 0px #F2F2F233;
         }
 
-        img{
+        img {
             width: 70%;
             height: 70%;
             object-fit: contain;
@@ -102,7 +106,7 @@
         letter-spacing: -1.5px;
         margin-bottom: 66px;
 
-        i{
+        i {
             font-weight: 400;
             font-style: normal;
             font-family: 'Cookie';

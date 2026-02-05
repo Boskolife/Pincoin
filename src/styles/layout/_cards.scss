@@ -253,7 +253,7 @@
                 right: 50%;
                 transform: translateX(50%);
                 max-width: 535px;
-
+                width: 100%;
                 height: auto;
                 object-fit: cover;
                 object-position: center;
@@ -621,6 +621,8 @@
                 &.bottom-text {
                     @include media ("<phone") {
                         max-width: 315px;
+                        width: 100%;
+                        margin: 0 auto;
                     }
                 }
             }

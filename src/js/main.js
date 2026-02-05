@@ -328,8 +328,8 @@ const SwipeSection = (function () {
 
         gsap.timeline({
             scrollTrigger: {
-                trigger: '.swipe',
-                start: 'top top',
+                trigger: '.swipe__content',
+                start: 'top bottom',
                 onEnter: () => {
                     swipeSection.classList.add('active');
                 },
@@ -475,69 +475,6 @@ const MeetSection = (function () {
                     meetSection.classList.remove('active');
                     removeAnimationClasses();
                 }
-            }
-        });
-    };
-
-    /**
-     * Public API
-     */
-    return {
-        init
-    };
-})();
-
-/**
- * Header Button Background Module
- * Handles adding change-bg class to header button on even sections
- */
-const HeaderButtonBackground = (function () {
-    'use strict';
-
-    /**
-     * Initialize header button background changes
-     */
-    const init = () => {
-        const headerButton = document.querySelector('.header__menu-buttons-wrapper');
-        const main = document.querySelector('.main');
-        
-        if (!headerButton || !main) {
-            return;
-        }
-
-        // Get all direct child sections of main
-        const sections = Array.from(main.children).filter(child => 
-            child.tagName === 'SECTION'
-        );
-
-        if (sections.length === 0) {
-            return;
-        }
-
-        // Create ScrollTriggers for each even section (index 1, 3, 5, etc.)
-        sections.forEach((section, index) => {
-            // Check if section index is even (1-based: 2nd, 4th, 6th, etc.)
-            // In 0-based array: index 1, 3, 5, etc. are even sections
-            const isEvenSection = (index + 1) % 2 === 0;
-
-            if (isEvenSection) {
-                ScrollTrigger.create({
-                    trigger: section,
-                    start: 'top center',
-                    end: 'bottom center',
-                    onEnter: () => {
-                        headerButton.classList.add('change-button');
-                    },
-                    onLeave: () => {
-                        headerButton.classList.remove('change-button');
-                    },
-                    onEnterBack: () => {
-                        headerButton.classList.add('change-button');
-                    },
-                    onLeaveBack: () => {
-                        headerButton.classList.remove('change-button');
-                    }
-                });
             }
         });
     };

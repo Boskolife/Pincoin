@@ -80,34 +80,9 @@
         }
     }
 
-
-    &__menu-buttons-wrapper {
-        position: relative;
-        min-width: 150px;
-
-        @include media ("<phone") {
-            order: 3;
-            min-width: 110px;
-            height: 44px;
-        }
-
-        &.change-button {
-            .header__menu-button {
-                opacity: 0;
-                pointer-events: none;
-                transition: var(--transition-speed);
-            }
-
-            .header__menu-link {
-                opacity: 1;
-                pointer-events: auto;
-                transition: var(--transition-speed);
-            }
-        }
-    }
-
     &__menu-button {
-        width: 100%;
+        min-width: 150px;
+        width: 150px;
         padding: 14px 24px;
         background-color: var(--color-btn-bg);
         color: $white-text;
@@ -118,16 +93,14 @@
         @include adaptive-value("font-size", 18, 14, 1);
         @include adaptive-value("padding-top", 14, 12, 1);
         @include adaptive-value("padding-bottom", 14, 12, 1);
-        @include adaptive-value("padding-right", 24, 16, 1);
-        @include adaptive-value("padding-left", 24, 16, 1);
+        @include adaptive-value("padding-right", 24, 10, 1);
+        @include adaptive-value("padding-left", 24, 10, 1);
         background: linear-gradient(98.09deg, #FA5EB5 18.04%, #8610E1 100%);
+        background-size: 200% 200%;
         box-shadow: 0px 4px 23.2px 0px #FA5EB582;
         position: relative;
         overflow: hidden;
-
-        opacity: 1;
-        pointer-events: auto;
-        transition: var(--transition-speed);
+        animation: gradientFlow 4s ease infinite;
         transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1),
             color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
             box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -135,53 +108,14 @@
         [data-theme="light"] & {
             background: linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
                 linear-gradient(142.93deg, #FFB2EB 15.16%, #FF51D3 95.7%);
+            background-size: 200% 200%;
         }
 
         @include media ("<phone") {
-            height: 100%;
-        }
-    }
-
-
-    &__menu-link {
-        position: absolute;
-        left: 0;
-        top: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-        width: 100%;
-        margin: 0 auto;
-        @include adaptive-value("font-size", 18, 14, 1);
-        @include adaptive-value("padding-top", 14, 12, 1);
-        @include adaptive-value("padding-bottom", 14, 12, 1);
-        padding-left: 9px;
-        padding-right: 9px;
-        border-radius: 1187px;
-        background: linear-gradient(125.79deg, #8C421D 0.58%, #FBE67B 32.51%, #FCFBE7 53.14%, #F7D14E 76.15%, #D4A041 98.73%);
-        opacity: 0;
-        pointer-events: none;
-        transition: var(--transition-speed);
-
-        img {
-            width: 17px;
-            height: 17px;
-        }
-
-        span {
-            color: $black-text;
-            font-weight: 700;
-            line-height: 120%;
-            text-align: center;
-            @include adaptive-value("font-size", 16, 10, 1);
-            text-transform: uppercase;
-        }
-
-
-        @include media ("<phone") {
-            height: 100%;
-            padding: 8px;
+            order: 3;
+            min-width: 110px;
+            width: 110px;
+            height: 44px;
         }
     }
 
@@ -200,6 +134,8 @@
         @include media ("<phone") {
             order: 1;
             padding: 6px 7px;
+            min-width: 110px;
+            width: 110px;
             height: 44px;
         }
     }
@@ -270,7 +206,7 @@
         transform: translateY(-50%) translateX(calc(87px - 34px - 16px));
 
         @include media ("<phone") {
-            transform: translateY(-50%) translateX(calc(87px - 30px - 14px));
+            transform: translateY(-50%) translateX(65px);
         }
 
         .header__theme-switcher-icon--moon {
@@ -282,5 +218,18 @@
             opacity: 1;
             transform: scale(1) rotate(0deg);
         }
+    }
+}
+
+// Gradient flow animation
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
     }
 }

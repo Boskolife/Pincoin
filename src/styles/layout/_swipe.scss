@@ -59,6 +59,10 @@
         margin: 0 auto;
         @include adaptive-value("margin-bottom", 80, 40, 1);
         color: $gray;
+
+        @include media ("<phone") {
+            max-width: 335px;
+        }
     }
 
     &__content {

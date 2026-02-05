@@ -80,7 +80,15 @@
         }
 
         @include media ("<phone") {
-            max-width: 280px;
+            max-width: 300px;
+        }
+
+        br{
+            display: none;
+
+            @include media ("<phone") {
+                display: block;
+            }
         }
     }
 
