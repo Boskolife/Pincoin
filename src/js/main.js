@@ -458,7 +458,7 @@ const HeaderButtonBackground = (function () {
      * Initialize header button background changes
      */
     const init = () => {
-        const headerButton = document.querySelector('.header__menu-button[data-join-waitlist]');
+        const headerButton = document.querySelector('.header__menu-buttons-wrapper');
         const main = document.querySelector('.main');
         
         if (!headerButton || !main) {
@@ -486,16 +486,16 @@ const HeaderButtonBackground = (function () {
                     start: 'top center',
                     end: 'bottom center',
                     onEnter: () => {
-                        headerButton.classList.add('change-bg');
+                        headerButton.classList.add('change-button');
                     },
                     onLeave: () => {
-                        headerButton.classList.remove('change-bg');
+                        headerButton.classList.remove('change-button');
                     },
                     onEnterBack: () => {
-                        headerButton.classList.add('change-bg');
+                        headerButton.classList.add('change-button');
                     },
                     onLeaveBack: () => {
-                        headerButton.classList.remove('change-bg');
+                        headerButton.classList.remove('change-button');
                     }
                 });
             }

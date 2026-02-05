@@ -73,6 +73,12 @@
             box-shadow: 0px 0px 3px 0px #F2F2F233;
         }
 
+        img{
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+        }
+
         @include media ("<desktop") {
             display: none;
         }

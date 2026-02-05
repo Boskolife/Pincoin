@@ -80,8 +80,30 @@
         }
     }
 
-    &__menu-button {
+
+    &__menu-buttons-wrapper {
+        position: relative;
         min-width: 150px;
+
+        &.change-button {
+            .header__menu-button {
+                opacity: 0;
+                scale: 0;
+                pointer-events: none;
+                transition: var(--transition-speed);
+            }
+
+            .header__menu-link {
+                opacity: 1;
+                scale: 1;
+                pointer-events: auto;
+                transition: var(--transition-speed);
+            }
+        }
+    }
+
+    &__menu-button {
+        width: 100%;
         padding: 14px 24px;
         background-color: var(--color-btn-bg);
         color: $white-text;
@@ -98,25 +120,62 @@
         box-shadow: 0px 4px 23.2px 0px #FA5EB582;
         position: relative;
         overflow: hidden;
+
+        opacity: 1;
+        scale: 1;
+        pointer-events: auto;
+        transition: var(--transition-speed);
         transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                    color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                    box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+            box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
         [data-theme="light"] & {
             background: linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
                 linear-gradient(142.93deg, #FFB2EB 15.16%, #FF51D3 95.7%);
         }
 
-        &.change-bg {
-            color: $black-text;
-            background: linear-gradient(125.79deg, #8C421D 0.58%, #FBE67B 32.51%, #FCFBE7 53.14%, #F7D14E 76.15%, #D4A041 98.73%);
-            box-shadow: 0px 4px 23.2px 0px rgba(212, 160, 65, 0.5);
-        }
-
         @include media ("<phone") {
             order: 3;
             height: 44px;
             min-width: 110px;
+        }
+    }
+
+
+    &__menu-link {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        width: 100%;
+        margin: 0 auto;
+        @include adaptive-value("font-size", 18, 14, 1);
+        @include adaptive-value("padding-top", 14, 12, 1);
+        @include adaptive-value("padding-bottom", 14, 12, 1);
+        padding-left: 9px;
+        padding-right: 9px;
+        border-radius: 1187px;
+        background: linear-gradient(125.79deg, #8C421D 0.58%, #FBE67B 32.51%, #FCFBE7 53.14%, #F7D14E 76.15%, #D4A041 98.73%);
+        opacity: 0;
+        scale: 0;
+        pointer-events: none;
+        transition: var(--transition-speed);
+
+        img {
+            width: 17px;
+            height: 17px;
+        }
+
+        span {
+            color: $black-text;
+            font-weight: 700;
+            line-height: 120%;
+            text-align: center;
+            font-size: 16px;
+            text-transform: uppercase;
         }
     }
 
