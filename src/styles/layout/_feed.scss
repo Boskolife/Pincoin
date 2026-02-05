@@ -42,7 +42,7 @@
                     }
 
                     &.bottom-text {
-                        max-width: 272px;
+                        max-width: 350px;
                     }
                 }
             }
@@ -179,6 +179,7 @@
         text-align: center;
 
         &.top-text {
+            font-weight: 600;
             @include adaptive-value("font-size", 26, 18, 1);
             color: var(--color-text-primary);
             @include adaptive-value("margin-bottom", 23, 8, 1);
@@ -192,7 +193,7 @@
             margin: 0 auto;
 
             @include media ("<tablet") {
-                max-width: 321px;
+                max-width: 314px;
             }
 
             br {

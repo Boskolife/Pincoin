@@ -73,7 +73,7 @@
 
     &__subtitle {
         @include adaptive-value("font-size", 40, 18, 1);
-        font-weight: 500;
+        font-weight: 600;
         line-height: 120%;
         text-align: center;
         @include gradient-text;

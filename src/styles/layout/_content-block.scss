@@ -330,6 +330,14 @@
     &__title {
         max-width: 905px;
         @include adaptive-value("margin-bottom", 40, 26, 1);
+
+        br {
+            display: none;
+
+            @include media ("<phone") {
+                display: block;
+            }
+        }
     }
 }
 

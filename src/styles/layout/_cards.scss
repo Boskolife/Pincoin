@@ -321,9 +321,17 @@
                     max-width: 531px;
                     width: 100%;
 
-                    @include media ("<tablet") {
-                        max-width: 257px;
+                    @include media ("<phone") {
+                        max-width: 300px;
                         margin: 0 auto;
+                    }
+
+                    br {
+                        display: none;
+
+                        @include media ("<phone") {
+                            display: block;
+                        }
                     }
                 }
             }
@@ -468,6 +476,7 @@
 
 
                     @include media ("<tablet") {
+                        max-width: 305px;
                         padding: 0 25px;
                         margin: 0 auto;
                     }
@@ -549,7 +558,7 @@
                     max-width: 424px;
 
                     @include media ("<tablet") {
-                        max-width: 315px;
+                        max-width: 270px;
                         width: 100%;
                         margin: 0 auto;
                     }
