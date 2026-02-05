@@ -8,15 +8,19 @@
         padding-bottom: 70px;
         padding-left: 110px;
         padding-right: 110px;
-        @include adaptive-value("padding-right", 110, 30, 1);
-        @include adaptive-value("padding-left", 110, 30, 1);
-        @include adaptive-value("padding-bottom", 70, 40, 1);
-        @include adaptive-value("padding-top", 70, 40, 1);
+        @include adaptive-value("padding-right", 135, 35, 1);
+        @include adaptive-value("padding-left", 135, 35, 1);
+        @include adaptive-value("padding-top", 140, 72, 1);
+        @include adaptive-value("padding-bottom", 110, 52, 1);
     }
 
     &__content {
-        padding: 60px 15px;
+        padding: 70px 10px;
         background-color: var(--color-bg-secondary);
+
+        @include media ("<phone") {
+            padding: 25px 10px;
+        }
     }
 
     &__frame {
@@ -107,7 +111,7 @@
             font-weight: 600;
             line-height: 120%;
             text-align: center;
-            @include adaptive-value("font-size", 56, 25, 1);
+            @include adaptive-value("font-size", 56, 22, 1);
             text-transform: uppercase;
 
             [data-theme="light"] & {
