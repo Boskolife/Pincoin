@@ -103,9 +103,10 @@
         margin-bottom: 66px;
 
         i{
+            font-weight: 400;
             font-style: normal;
             font-family: 'Cookie';
-            font-size: 160px;
+            @include adaptive-value("font-size", 160, 85, 1);
         }
 
         @include media ("<desktop") {
@@ -143,6 +144,10 @@
         @include media ("<desktop") {
             margin: 0 auto 14px auto;
             order: 4;
+        }
+
+        @include media ("<phone") {
+            max-width: 300px;
         }
 
         [data-theme="light"] & {

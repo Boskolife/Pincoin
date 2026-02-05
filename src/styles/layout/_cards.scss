@@ -536,11 +536,11 @@
                     position: relative;
                 }
 
-               @include media ("<phone") {
-                max-width: 100%;
-               } 
+                @include media ("<phone") {
+                    max-width: 100%;
+                }
 
-             
+
             }
 
             .cards-middle__text {
@@ -616,6 +616,14 @@
                     padding: 0 6px;
                 }
             }
+
+            .cards__text {
+                &.bottom-text {
+                    @include media ("<phone") {
+                        max-width: 315px;
+                    }
+                }
+            }
         }
 
         &:last-child {
@@ -635,6 +643,14 @@
                     br {
                         @include media ("<tablet") {
                             display: none;
+                        }
+                    }
+
+                    &.bottom-text {
+                        @include media ("<phone") {
+                            max-width: 215px;
+                            width: 100%;
+                            margin: 0 auto;
                         }
                     }
                 }

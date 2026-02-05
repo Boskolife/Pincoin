@@ -78,6 +78,10 @@
             margin: 0 auto;
             margin-bottom: 14px;
         }
+
+        @include media ("<phone") {
+            max-width: 280px;
+        }
     }
 
     &__img {
@@ -89,7 +93,7 @@
         position: relative;
 
         @include media ("<tablet") {
-            @include adaptive-value("height", 320, 210, 1);
+            @include adaptive-value("height", 320, 250, 1);
         }
 
         &::after {

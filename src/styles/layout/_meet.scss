@@ -59,7 +59,17 @@
         @include gradient-text;
         @include adaptive-value("margin-bottom", 60, 40, 1);
 
-        span {
+        &-span-gray {
+
+            [data-theme="light"] & {
+                background: #828282;
+                color: transparent;
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
+        }
+
+        &-span-pink {
             color: #C136F3 !important;
             -webkit-text-fill-color: #C136F3 !important;
 
@@ -105,6 +115,10 @@
 
             [data-theme="light"] & {
                 color: $black-text;
+            }
+
+            @include media ("<phone") {
+                max-width: 343px;
             }
         }
 

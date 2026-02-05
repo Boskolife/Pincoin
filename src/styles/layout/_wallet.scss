@@ -108,6 +108,10 @@
         margin: 0 auto;
         @include gradient-text;
         margin-bottom: 40px;
+
+        @include media ("<phone") {
+            max-width: 315px;
+        }
     }
 
 
@@ -378,7 +382,7 @@
         z-index: 2;
 
         @include media ("<tablet") {
-            max-width: 343px;
+            max-width: 290px;
             width: 100%;
             margin: 0 auto;
         }

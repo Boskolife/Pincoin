@@ -152,7 +152,7 @@
         position: absolute;
 
         @include media ("<tablet") {
-            width: 55px;
+            width: 75px;
         }
 
         &.star-1 {
@@ -396,6 +396,10 @@
     &__title {
         max-width: 840px;
         margin-bottom: 14px;
+
+        @include media ("<phone") {
+            max-width: 300px;
+        }
     }
 
     &__border {
@@ -406,6 +410,7 @@
         height: 100%;
         width: 100%;
         object-fit: cover;
+        pointer-events: none;
 
         @include media ("<tablet") {
             top: 25%;

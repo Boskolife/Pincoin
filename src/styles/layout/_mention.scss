@@ -81,7 +81,7 @@
         color: $gray;
         
         @include media ("<phone") {
-            max-width: 315px;
+            max-width: 310px;
             width: 100%;
             margin: 0 auto;
             text-align: center;
@@ -109,7 +109,7 @@
         }
 
         @include media ("<tablet") {
-            @include adaptive-value("height", 320, 210, 1);
+            @include adaptive-value("height", 320, 250, 1);
         }
 
         img {

@@ -291,7 +291,7 @@ html {
     border: 1px solid $pink;
     border-radius: 28px;
     background-color: var(--color-bg-primary);
-    font-size: 18px;
+    @include adaptive-value("font-size", 18, 12, 1);
     line-height: 120%;
     font-weight: 500;
     padding: 0 0 0 24px;

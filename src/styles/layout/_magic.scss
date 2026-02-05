@@ -108,6 +108,10 @@
             font-weight: 500;
             max-width: 875px;
             color: $gray;
+
+            @include media ("<tablet") {
+                max-width: 345px;
+            }
         }
     }
 }
