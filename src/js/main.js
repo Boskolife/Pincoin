@@ -164,6 +164,46 @@ const ModalPopup = (function () {
             return;
         }
 
+        // ============================================
+        // TEMPORARY SOLUTION - AUTOMATIC EMAIL SENDING
+        // TODO: Remove this temporary solution later
+        // Automatically sends form submission to dmytro@improvs.com
+        // Uses Formspree service for automatic email delivery
+        // Setup: 1. Go to https://formspree.io and create account
+        //        2. Create a new form and get the form ID
+        //        3. Replace 'YOUR_FORMSPREE_FORM_ID' below with your form ID
+        //        4. Configure form to send emails to dmytro@improvs.com
+        // ============================================
+        const sendEmail = async () => {
+            try {
+                // Using Formspree service for automatic email sending
+                // This is a temporary solution - replace with proper backend API later
+                const formData = new FormData();
+                formData.append('email', email);
+
+                const response = await fetch('https://formspree.io/f/xeeljvqv', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                const result = await response.json();
+                if (!response.ok) {
+                    console.error('Email sending failed:', result);
+                }
+            } catch (error) {
+                console.error('Error sending email:', error);
+            }
+        };
+
+        // Send email automatically (non-blocking)
+        sendEmail();
+        // ============================================
+        // END OF TEMPORARY SOLUTION
+        // ============================================
+
         // Close waitlist popup
         closePopup(waitlistPopup);
 
