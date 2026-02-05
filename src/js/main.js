@@ -495,9 +495,7 @@ const initApp = () => {
     ThemeSwitcher.setupEventListeners();
     ModalPopup.setupEventListeners();
     SwipeSection.init();
-    // WalletScroll.init();
     MeetSection.init();
-    HeaderButtonBackground.init();
     if(window.innerWidth > 480) {LogoScrollAnimation.init();}
 };
 
