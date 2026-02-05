@@ -402,7 +402,7 @@
             .cards-middle__img {
                 position: absolute;
                 z-index: 1;
-                bottom: 0;
+                bottom: 12%;
                 right: 0;
                 max-width: 695px;
                 width: 65%;
@@ -411,7 +411,7 @@
                 object-position: center;
 
                 @include media ("<tablet") {
-                    max-width: 91%;
+                    max-width: 98%;
                     width: 50%;
 
                     &::after {
@@ -535,6 +535,10 @@
                     max-width: 280px;
                     position: relative;
                 }
+
+               @include media ("<phone") {
+                max-width: 100%;
+               } 
 
              
             }
