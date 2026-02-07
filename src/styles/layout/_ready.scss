@@ -1,5 +1,5 @@
 .ready {
-    padding-top: 70px;
+    padding-top: 80px;
     position: relative;
     overflow: hidden;
 
@@ -7,7 +7,7 @@
         content: "";
         position: absolute;
         z-index: -1;
-        bottom: -115%;
+        bottom: -15%;
         left: 50%;
         transform: translate(-50%, -50%);
         background: rgba(193, 54, 243, 0.6117647059);
@@ -55,7 +55,7 @@
         @include adaptive-value("margin-bottom", 16, 8, 1);
 
         @include media ("<tablet") {
-            max-width: 225px;
+            max-width: 215px;
             width: 100%;
             margin: 0 auto 8px auto;
         }
@@ -101,7 +101,7 @@
         position: relative;
 
         @include media ("<tablet") {
-            @include adaptive-value("height", 320, 250, 1);
+            @include adaptive-value("height", 320, 220, 1);
         }
 
         &::after {

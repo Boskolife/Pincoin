@@ -13,7 +13,7 @@
         position: absolute;
         z-index: -1;
         pointer-events: none;
-        filter: blur(5px);
+        filter: blur(3px);
 
         &.img-1 {
             width: 340px;
@@ -59,14 +59,14 @@
     }
 
     &__title {
-        @include gradient-text;
+        color: var(--color-text-primary);
         @include adaptive-value("font-size", 40, 18, 1);
         font-weight: 600;
         line-height: 120%;
         text-align: center;
 
         @include media ("<tablet") {
-            max-width: 235px;
+            max-width: 228px;
             width: 100%;
             margin: 0 auto;
         }

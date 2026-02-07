@@ -2,6 +2,9 @@
     padding: 20px 0;
     text-align: center;
 
+    @include media ("<phone") {
+        padding-top: 0;
+    }
 
     .container {
         position: relative;
@@ -37,6 +40,7 @@
 
         @include media ("<phone") {
             height: 230px;
+            bottom: 4%;
         }
 
         img {
@@ -64,7 +68,7 @@
     }
 
     &__title {
-        @include adaptive-value("font-size", 56, 18, 1);
+        @include adaptive-value("font-size", 56, 24, 1);
         font-weight: 500;
         line-height: 120%;
         color: var(--color-text-primary);
@@ -72,8 +76,8 @@
     }
 
     &__subtitle {
-        @include adaptive-value("font-size", 40, 18, 1);
-        font-weight: 600;
+        @include adaptive-value("font-size", 40, 24, 1);
+        font-weight: 500;
         line-height: 120%;
         text-align: center;
         @include gradient-text;
@@ -116,10 +120,6 @@
         margin: 0 auto;
         @include adaptive-value("margin-top", -25, -15, 1);
         @include adaptive-value("margin-bottom", 30, 10, 1);
-
-        @include media ("<phone") {
-            margin-top: 0;
-        }
 
         &.light {
             display: none;

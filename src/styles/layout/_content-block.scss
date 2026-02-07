@@ -52,7 +52,7 @@
     padding: 50px 0;
 
     @include media ("<tablet") {
-        padding: 25px 0;
+        padding: 25px 0 40px 0;
     }
 
     &__icon {
@@ -197,13 +197,12 @@
 
     &__title {
         max-width: 675px;
-        @include adaptive-value("margin-bottom", 40, 26, 1);
+        @include adaptive-value("margin-bottom", 40, 14, 1);
     }
 
     &__star {
         position: absolute;
 
-        // Random positioning for stars - completely random values
         &.star-1 {
             top: 17%;
             left: 9%;
@@ -270,6 +269,10 @@
 
 .swap-section {
     padding: 52px 0;
+
+    @include media ("<phone") {
+        padding-top: 40px
+    }
 
     &__content {
         @include adaptive-value("padding-top", 230, 80, 1);
@@ -343,6 +346,10 @@
 
 .checkout-section {
 
+    @include media ("<phone") {
+        padding-top: 60px;
+    }
+
     &__content {
         @include adaptive-value("padding-top", 265, 102, 1);
         @include adaptive-value("padding-bottom", 175, 102, 1);
@@ -392,7 +399,7 @@
     padding: 50px 0;
 
     @include media ("<tablet") {
-        padding: 25px 0;
+        padding: 80px 0 70px 0;
     }
 
     &__content {
@@ -404,10 +411,18 @@
     &__title {
         max-width: 840px;
         margin-bottom: 14px;
+        font-weight: 600;
+        @include adaptive-value("font-size", 40, 18, 1);
+        letter-spacing: 0;
 
         @include media ("<phone") {
-            max-width: 280px;
+            max-width: 305px;
         }
+    }
+
+    &__text {
+        font-weight: 600;
+        @include adaptive-value("font-size", 26, 18, 1);
     }
 
     &__border {
@@ -415,6 +430,9 @@
         top: 30%;
         left: 50%;
         transform: translateX(-50%);
+        @include adaptive-value("margin-bottom", 40, 26, 1);
+            margin-bottom: 40px;
+
         height: 100%;
         width: 100%;
         object-fit: cover;
@@ -423,6 +441,13 @@
         @include media ("<tablet") {
             top: 25%;
         }
+
+        
+        @include media ("<phone") {
+            max-width: 335px;
+            top: 22%;
+        }
+
     }
 
     &__logo {
@@ -445,6 +470,10 @@
             top: 25%;
             width: 43px;
             height: 43px;
+        }
+
+        @include media ("<phone") {
+            top: 22%;
         }
 
         [data-theme="light"] & {

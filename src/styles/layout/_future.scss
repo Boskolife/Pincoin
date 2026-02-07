@@ -3,7 +3,7 @@
     padding: 100px 0;
 
     @include media ("<tablet") {
-        padding: 75px 0 95px 0;
+        padding: 75px 0px;
     }
 
     &::after {
@@ -71,12 +71,12 @@
                 width: 40%;
                 height: 50%;
                 border-radius: 50%;
-                background: rgba(193, 54, 243, 1);
+                background: #ce2cbd;
                 filter: blur(40px);
 
                 @include media ("<tablet") {
                     width: 55%;
-                    height: 55%;
+                    height: 70%;
                     filter: blur(20px);
                 }
 

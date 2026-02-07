@@ -40,6 +40,10 @@
         width: 100%;
         margin: 0 auto;
 
+        @include media ("<phone") {
+            margin-bottom: 10px;
+        }
+
         &.light {
             display: none;
         }
@@ -64,7 +68,7 @@
         max-width: 286px;
         width: 22%;
         margin: 0 auto;
-        @include gradient-text;
+        color: var(--color-text-primary);
         position: absolute;
         top: 2%;
         left: 10%;
@@ -102,7 +106,7 @@
             max-width: 285px;
         }
 
-        br{
+        br {
             display: none;
 
             @include media ("<phone") {

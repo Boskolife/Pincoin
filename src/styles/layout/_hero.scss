@@ -3,7 +3,7 @@
 
     @include media ("<tablet") {
         padding-top: 14px;
-        padding-bottom: 74px;
+        padding-bottom: 30px;
     }
 
     .container {
@@ -101,7 +101,7 @@
     }
 
     &__title {
-        @include adaptive-value("font-size", 160, 65, 1);
+        @include adaptive-value("font-size", 160, 70, 1);
         line-height: 89%;
         letter-spacing: -1.5px;
         margin-bottom: 66px;
@@ -122,6 +122,10 @@
         span {
             color: $pink;
             text-shadow: -6px 6px 0px rgba(#FF51D3, 0.5);
+
+            @include media ("<phone") {
+                text-shadow: -2px 2px 0px rgba(#FF51D3, 0.5);
+            }
         }
     }
 

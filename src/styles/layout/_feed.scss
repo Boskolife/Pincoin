@@ -188,6 +188,7 @@
         &.bottom-text {
             @include adaptive-value("font-size", 26, 14, 1);
             color: $gray;
+            font-weight: 500;
             max-width: 760px;
             width: 100%;
             margin: 0 auto;
@@ -197,8 +198,10 @@
             }
 
             br {
+                display: none;
+
                 @include media ("<tablet") {
-                    display: none;
+                    display: block;
                 }
             }
         }

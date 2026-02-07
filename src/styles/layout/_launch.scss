@@ -44,6 +44,7 @@
         color: $gray;
         @include adaptive-value("margin-bottom", 18, 10, 1);
         display: inline-block;
+        @include adaptive-value("font-size", 26, 14, 1);
 
         [data-theme="light"] & {
             background: linear-gradient(278.03deg, #686868 11.66%, #000000 70.92%);
@@ -146,13 +147,7 @@
         @include adaptive-value("margin-bottom", 36, 28, 1);
 
         @include media ("<desktop") {
-            order: 2;
             justify-content: center;
-            margin-bottom: 35px;
-        }
-
-        @include media ("<tablet") {
-            gap: 10px;
         }
     }
 
@@ -191,7 +186,7 @@
 
     &__title {
         @include adaptive-value("font-size", 56, 18, 1);
-        font-weight: 500;
+        font-weight: 600;
         line-height: 120%;
         text-align: center;
         color: var(--color-text-primary);
@@ -236,6 +231,10 @@
         border-radius: 1187px;
         background: linear-gradient(125.79deg, #8C421D 0.58%, #FBE67B 32.51%, #FCFBE7 53.14%, #F7D14E 76.15%, #D4A041 98.73%);
 
+        @include media ("<phone") {
+            gap: 3px;
+        }
+
         img {
             @include adaptive-value("width", 32, 24, 1);
             @include adaptive-value("height", 32, 24, 1);
@@ -246,7 +245,7 @@
             font-weight: 700;
             line-height: 120%;
             text-align: center;
-            @include adaptive-value("font-size", 30, 14, 1);
+            @include adaptive-value("font-size", 30, 15, 1);
             text-transform: uppercase;
         }
     }

@@ -21,7 +21,7 @@
 
     &.active {
         .meet__border {
-            transform: translate(-50%, -25%) rotateX(180deg);
+            transform: translate(-50%, -45%) rotateX(180deg);
             transition: transform 0.3s ease-in-out;
         }
     }
@@ -61,12 +61,10 @@
 
         &-span-gray {
 
-            [data-theme="light"] & {
-                background: #828282;
-                color: transparent;
-                -webkit-background-clip: text;
-                background-clip: text;
-            }
+            background: #828282;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
         }
 
         &-span-pink {
@@ -85,6 +83,10 @@
         max-width: 1140px;
         width: 100%;
         margin: 0 auto;
+
+        @include media ("<phone") {
+            margin-bottom: 25px;
+        }
 
         &.light {
             display: none;
@@ -131,6 +133,10 @@
             max-width: 525px;
             width: 100%;
             margin: 0 auto;
+
+            @include media ("<phone") {
+                max-width: 300px;
+            }
         }
     }
 }

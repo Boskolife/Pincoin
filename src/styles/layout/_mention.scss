@@ -9,8 +9,8 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 35%;
-        background: linear-gradient(0deg, #121212 0%, rgba(18, 18, 18, 0) 60.58%);
+        height: 55%;
+        background: linear-gradient(0deg, #121212 10%, rgba(18, 18, 18, 0) 60.58%);
 
         [data-theme="light"] & {
             background: linear-gradient(0deg, #F7F7F7 0%, rgba(247, 247, 247, 0) 60.58%);
@@ -36,7 +36,6 @@
             filter: blur(125px);
             bottom: -50%;
         }
-
     }
 
     &__line {
@@ -63,7 +62,7 @@
         @include adaptive-value("font-size", 26, 18, 1);
         font-weight: 600;
         line-height: 120%;
-        margin-bottom: 16px;
+        @include adaptive-value("margin-bottom", 16, 8, 1);
 
         br {
             display: none;
@@ -79,9 +78,9 @@
         font-weight: 500;
         line-height: 120%;
         color: $gray;
-        
+
         @include media ("<phone") {
-            max-width: 310px;
+            max-width: 345px;
             width: 100%;
             margin: 0 auto;
             text-align: center;
@@ -115,7 +114,7 @@
         img {
             width: 100%;
             height: 100%;
-            object-position:  top center;
+            object-position: top center;
 
             @include media ("<tablet") {
                 object-fit: cover;
