@@ -117,9 +117,25 @@
         @include adaptive-value("margin-top", -25, -15, 1);
         @include adaptive-value("margin-bottom", 30, 10, 1);
 
-
         @include media ("<phone") {
             margin-top: 0;
+        }
+
+        &.light {
+            display: none;
+
+            [data-theme="light"] & {
+                display: block;
+                margin-top: -25px;
+            }
+        }
+
+        &.dark {
+            display: block;
+
+            [data-theme="light"] & {
+                display: none;
+            }
         }
     }
 
