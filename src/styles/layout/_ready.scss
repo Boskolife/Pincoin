@@ -21,6 +21,10 @@
             bottom: -15%;
             filter: blur(100px);
         }
+
+        [data-theme="light"] & {
+            display: none;
+        }
     }
 
     &__content {

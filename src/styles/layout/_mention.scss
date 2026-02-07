@@ -36,6 +36,10 @@
             filter: blur(125px);
             bottom: -50%;
         }
+
+        [data-theme="light"] & {
+            display: none;
+        }
     }
 
     &__line {

@@ -122,6 +122,10 @@
                 height: 150px;
                 filter: blur(150px);
             }
+
+            [data-theme="light"] & {
+                display: none;
+            }
         }
 
         img {

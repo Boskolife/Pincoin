@@ -17,6 +17,10 @@
         height: 30%;
         background: #C136F39C;
         filter: blur(200px);
+
+        [data-theme="light"] & {
+            display: none;
+        }
     }
 
     &.active {
