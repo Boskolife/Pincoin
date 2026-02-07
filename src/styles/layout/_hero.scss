@@ -110,7 +110,7 @@
             font-weight: 400;
             font-style: normal;
             font-family: 'Cookie';
-            @include adaptive-value("font-size", 160, 85, 1);
+            @include adaptive-value("font-size", 200, 85, 1);
         }
 
         @include media ("<desktop") {

@@ -326,7 +326,7 @@
                     width: 100%;
 
                     @include media ("<phone") {
-                        max-width: 300px;
+                        max-width: 245px;
                         margin: 0 auto;
                     }
 
@@ -414,7 +414,7 @@
             .cards-middle__img {
                 position: absolute;
                 z-index: 1;
-                bottom: 12%;
+                bottom: 0;
                 right: 0;
                 max-width: 695px;
                 width: 65%;
@@ -443,6 +443,7 @@
 
                 @include media ("<phone") {
                     width: 100%;
+                    bottom: 12%;
                 }
 
                 &::before {
@@ -478,9 +479,8 @@
                 &.bottom-text {
                     max-width: 410px;
 
-
                     @include media ("<tablet") {
-                        max-width: 305px;
+                        max-width: 325px;
                         padding: 0 25px;
                         margin: 0 auto;
                     }
@@ -559,7 +559,7 @@
             .cards-middle__text {
 
                 &.bottom-text {
-                    max-width: 424px;
+                    max-width: 410px;
 
                     @include media ("<tablet") {
                         max-width: 270px;
@@ -696,5 +696,15 @@
             }
         }
 
+    }
+
+    &__text {
+        &.top-text {
+            @include adaptive-value("font-size", 26, 16, 1);
+        }
+
+        &.bottom-text {
+            @include adaptive-value("font-size", 26, 14, 1);
+        }
     }
 }

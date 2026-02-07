@@ -59,16 +59,26 @@
     }
 
     &__title {
-        color: var(--color-text-primary);
+        @include gradient-text;
+      
         @include adaptive-value("font-size", 40, 18, 1);
-        font-weight: 600;
+        font-weight: 500;
         line-height: 120%;
         text-align: center;
 
         @include media ("<tablet") {
-            max-width: 228px;
+            max-width: 230px;
             width: 100%;
-            margin: 0 auto;
+            margin: -15px auto 0 auto;
+        }
+
+        @include media ("<phone") {
+            color: var(--color-text-primary) !important;
+            background: none !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: var(--color-text-primary) !important;
+            background-clip: text !important;
+            text-fill-color: var(--color-text-primary) !important;
         }
     }
 }

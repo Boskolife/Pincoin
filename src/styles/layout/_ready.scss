@@ -7,7 +7,7 @@
         content: "";
         position: absolute;
         z-index: -1;
-        bottom: -15%;
+        bottom: -100%;
         left: 50%;
         transform: translate(-50%, -50%);
         background: rgba(193, 54, 243, 0.6117647059);
@@ -16,6 +16,11 @@
         width: 80%;
         height: auto;
         aspect-ratio: 3 / 2;
+
+        @include media ("<phone") {
+            bottom: -15%;
+            filter: blur(100px);
+        }
     }
 
     &__content {
@@ -48,7 +53,7 @@
 
     &__subtitle {
         @include adaptive-value("font-size", 26, 18, 1);
-        font-weight: 600;
+        font-weight: 500;
         line-height: 120%;
         text-align: center;
         color: #E8E8E8;
@@ -58,6 +63,10 @@
             max-width: 215px;
             width: 100%;
             margin: 0 auto 8px auto;
+        }
+
+        @include media ("<phone") {
+            font-weight: 600;
         }
 
         [data-theme="light"] & {
@@ -83,7 +92,7 @@
             max-width: 300px;
         }
 
-        br{
+        br {
             display: none;
 
             @include media ("<phone") {

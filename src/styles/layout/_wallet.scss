@@ -13,7 +13,7 @@
         filter: blur(150px);
         border-radius: 50%;
         width: 40%;
-        height: 40%;
+        height: 60%;
         z-index: -1;
         pointer-events: none;
 
@@ -100,7 +100,7 @@
 
     &__title {
         @include adaptive-value("font-size", 26, 18, 1);
-        font-weight: 600;
+        font-weight: 500;
         line-height: 120%;
         text-align: center;
         max-width: 605px;
@@ -252,8 +252,8 @@
 
     &__text {
         &.top-text {
-            @include adaptive-value("font-size", 26, 18, 1); 
-            font-weight: 600;
+            @include adaptive-value("font-size", 26, 18, 1);
+            font-weight: 500;
             line-height: 120%;
             text-align: center;
             color: #E8E8E8;
@@ -278,7 +278,7 @@
             line-height: 120%;
             text-align: center;
             color: $gray;
-            max-width: 755px;
+            max-width: 730px;
             width: 100%;
             margin: 0 auto;
 
@@ -356,10 +356,10 @@
 
     &__title {
         @include adaptive-value("font-size", 26, 18, 1);
-        font-weight: 600;
+        font-weight: 500;
         line-height: 120%;
         text-align: center;
-        @include gradient-text;
+        color: var(--color-text-primary);
         @include adaptive-value("margin-bottom", 16, 8, 1);
         position: relative;
         z-index: 2;
@@ -379,6 +379,7 @@
         color: $gray;
         position: relative;
         z-index: 2;
+        max-width: 695px;
 
         @include media ("<tablet") {
             max-width: 290px;
@@ -413,6 +414,7 @@
                 display: block;
             }
         }
+
         img {
             width: 100%;
             height: 100%;

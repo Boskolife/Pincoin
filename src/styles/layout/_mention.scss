@@ -78,6 +78,7 @@
         font-weight: 500;
         line-height: 120%;
         color: $gray;
+        max-width: 690px;
 
         @include media ("<phone") {
             max-width: 345px;

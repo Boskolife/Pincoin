@@ -179,17 +179,17 @@
         text-align: center;
 
         &.top-text {
-            font-weight: 600;
+            font-weight: 500;
             @include adaptive-value("font-size", 26, 18, 1);
             color: var(--color-text-primary);
-            @include adaptive-value("margin-bottom", 23, 8, 1);
+            @include adaptive-value("margin-bottom", 16, 8, 1);
         }
 
         &.bottom-text {
             @include adaptive-value("font-size", 26, 14, 1);
             color: $gray;
             font-weight: 500;
-            max-width: 760px;
+            max-width: 740px;
             width: 100%;
             margin: 0 auto;
 

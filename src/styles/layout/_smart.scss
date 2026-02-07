@@ -60,6 +60,7 @@
     }
 
     &__title {
+        @include gradient-text;
         @include adaptive-value("font-size", 40, 18, 1);
         font-weight: 500;
         line-height: 120%;
@@ -80,6 +81,15 @@
             margin: 0 auto 8px auto;
             text-align: center
         }
+
+        @include media ("<phone") {
+            color: var(--color-text-primary) !important;
+            background: none !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: var(--color-text-primary) !important;
+            background-clip: text !important;
+            text-fill-color: var(--color-text-primary) !important;
+        }
     }
 
     &__text {
@@ -89,7 +99,7 @@
         line-height: 120%;
         text-align: start;
         max-width: 421px;
-        width: 30%;
+        width: 30.5%;
         position: absolute;
         top: 2%;
         right: 1%;

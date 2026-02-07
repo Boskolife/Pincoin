@@ -409,20 +409,25 @@
     }
 
     &__title {
-        max-width: 840px;
+        max-width: 910px;
         margin-bottom: 14px;
-        font-weight: 600;
+        font-weight: 500;
         @include adaptive-value("font-size", 40, 18, 1);
         letter-spacing: 0;
 
         @include media ("<phone") {
             max-width: 305px;
+            font-weight: 600;
         }
     }
 
     &__text {
-        font-weight: 600;
+        font-weight: 500;
         @include adaptive-value("font-size", 26, 18, 1);
+
+        @include media ("<phone") {
+            font-weight: 600;
+        }
     }
 
     &__border {

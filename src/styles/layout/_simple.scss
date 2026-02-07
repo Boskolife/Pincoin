@@ -32,7 +32,7 @@
 
     &__border {
         position: absolute;
-        bottom: 0;
+        bottom: -10%;
         left: 50%;
         transform: translateX(-50%);
         width: 130%;
@@ -40,7 +40,7 @@
 
         @include media ("<phone") {
             height: 230px;
-            bottom: 4%;
+            bottom: 6%;
         }
 
         img {
@@ -96,7 +96,7 @@
         z-index: 1;
 
         &.text-1 {
-            max-width: 705px;
+            max-width: 685px;
 
             br{
                 display: none;
@@ -141,10 +141,9 @@
 
     &__img-2 {
         display: block;
-        max-width: 595px;
+        max-width: 380px;
         width: 100%;
         margin: 0 auto;
-        margin-top: -6%;
         position: relative;
         z-index: 2;
 
@@ -171,7 +170,6 @@
     &__footer {
         position: relative;
         z-index: 2;
-        @include adaptive-value("margin-top", 25, -10, 1);
     }
 
     &__button {

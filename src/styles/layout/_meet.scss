@@ -106,7 +106,7 @@
     &__text {
         &.top-text {
             @include adaptive-value("font-size", 26, 18, 1);
-            font-weight: 600;
+            font-weight: 500;
             line-height: 120%;
             text-align: center;
             color: #E8E8E8;
