@@ -95,7 +95,8 @@
         @include adaptive-value("padding-bottom", 14, 12, 1);
         @include adaptive-value("padding-right", 24, 10, 1);
         @include adaptive-value("padding-left", 24, 10, 1);
-        background: linear-gradient(98.09deg, #FA5EB5 18.04%, #8610E1 100%);
+        white-space: nowrap;
+        background: linear-gradient(98.09deg, #fc79c1 18.04%, #8610E1 100%);
         background-size: 200% 200%;
         box-shadow: 0px 4px 23.2px 0px #FA5EB582;
         position: relative;

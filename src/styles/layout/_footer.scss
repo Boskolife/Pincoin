@@ -99,4 +99,26 @@
         width:max-content;
         margin: 30px auto 0 auto;
     }
+
+    &__creator-text {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 18px;
+        font-weight: 300;
+        text-transform: uppercase;
+
+        [data-theme="light"] & {
+            color: $pink;
+        }
+    }
+
+    &__creator-logo {
+        max-width: 92px;
+        transform: translateY(-3px);
+
+        &.light {
+            max-width: 100%;
+        }
+    }
 }

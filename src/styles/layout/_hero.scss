@@ -120,12 +120,30 @@
         }
 
         span {
-            color: $pink;
-            text-shadow: -6px 6px 0px rgba(#FF51D3, 0.5);
+            position: relative;
+            display: inline-block;
 
-            @include media ("<phone") {
-                text-shadow: -2px 2px 0px rgba(#FF51D3, 0.5);
+            &:before {
+                content: attr(data-text);
+                position: absolute;
+                inset: 0;
+                color: #923A6B;
+                z-index: -1;
+                transform: translate(-6px, 6px);
+
+                @include media("<phone") {
+                    transform: translate(-2px, 2px);
+                }
             }
+        }
+
+        b {
+            position: relative;
+            background: linear-gradient(142.93deg, #FFB2EB 15.16%, #FF51D3 95.7%);
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            z-index: 2;
         }
     }
 
