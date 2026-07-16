@@ -86,16 +86,13 @@ const ThemeSwitcher = (function () {
 
 /**
  * Modal Popup Module
- * Handles modal popup opening, closing and form submission
+ * Handles modal popup opening and closing
  */
 const ModalPopup = (function () {
     'use strict';
 
-    // DOM elements
-    const waitlistPopup = document.getElementById('waitlist-popup');
-    const donePopup = document.getElementById('done-popup');
     const popupOverlay = document.getElementById('popup-overlay');
-    const waitlistForm = document.querySelector('#waitlist-popup .popup__form');
+    const allPopups = () => document.querySelectorAll('.popup');
 
     /**
      * Enable or disable body scroll
@@ -111,7 +108,8 @@ const ModalPopup = (function () {
      */
     const openPopup = (popup) => {
         if (!popup) return;
-        
+
+        closeAllPopups();
         popupOverlay?.classList.add('active');
         popup.classList.add('active');
         toggleBodyScroll(true);
@@ -123,7 +121,7 @@ const ModalPopup = (function () {
      */
     const closePopup = (popup) => {
         if (!popup) return;
-        
+
         popup.classList.remove('active');
         popupOverlay?.classList.remove('active');
         toggleBodyScroll(false);
@@ -133,98 +131,29 @@ const ModalPopup = (function () {
      * Close all popups
      */
     const closeAllPopups = () => {
-        if (waitlistPopup) waitlistPopup.classList.remove('active');
-        if (donePopup) donePopup.classList.remove('active');
+        allPopups().forEach((popup) => popup.classList.remove('active'));
         if (popupOverlay) popupOverlay.classList.remove('active');
         toggleBodyScroll(false);
     };
 
     /**
-     * Validate email address
-     * @param {string} email - Email to validate
-     * @returns {boolean} True if email is valid
+     * Get popup element by id from data-popup attribute
+     * @param {string} popupId - Popup element id
+     * @returns {HTMLElement|null}
      */
-    const validateEmail = (email) => {
-        return email && email.includes('@') && email.length > 3;
+    const getPopupById = (popupId) => {
+        if (!popupId) return null;
+        return document.getElementById(popupId);
     };
 
     /**
-     * Handle waitlist form submission
-     * @param {Event} e - Submit event
-     */
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        
-        const emailInput = waitlistForm.querySelector('input[type="email"]');
-        const email = emailInput?.value.trim() || '';
-
-        // Validate email
-        if (!validateEmail(email)) {
-            alert('Please enter a valid email address');
-            return;
-        }
-
-        // ============================================
-        // TEMPORARY SOLUTION - AUTOMATIC EMAIL SENDING
-        // TODO: Remove this temporary solution later
-        // Automatically sends form submission to dmytro@improvs.com
-        // Uses Formspree service for automatic email delivery
-        // Setup: 1. Go to https://formspree.io and create account
-        //        2. Create a new form and get the form ID
-        //        3. Replace 'YOUR_FORMSPREE_FORM_ID' below with your form ID
-        //        4. Configure form to send emails to dmytro@improvs.com
-        // ============================================
-        const sendEmail = async () => {
-            try {
-                // Using Formspree service for automatic email sending
-                // This is a temporary solution - replace with proper backend API later
-                const formData = new FormData();
-                formData.append('email', email);
-
-                const response = await fetch('https://formspree.io/f/xeeljvqv', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                const result = await response.json();
-                if (!response.ok) {
-                    console.error('Email sending failed:', result);
-                }
-            } catch (error) {
-                console.error('Error sending email:', error);
-            }
-        };
-
-        // Send email automatically (non-blocking)
-        sendEmail();
-        // ============================================
-        // END OF TEMPORARY SOLUTION
-        // ============================================
-
-        // Close waitlist popup
-        closePopup(waitlistPopup);
-
-        // Open done popup after delay for smooth transition
-        setTimeout(() => {
-            openPopup(donePopup);
-        }, 300);
-
-        // Reset form
-        if (emailInput) {
-            emailInput.value = '';
-        }
-    };
-
-    /**
-     * Handle join waitlist button click
+     * Handle data-popup trigger click
      * @param {Event} e - Click event
      */
-    const handleJoinWaitlistClick = (e) => {
+    const handleDataPopupClick = (e) => {
         e.preventDefault();
-        openPopup(waitlistPopup);
+        const popupId = e.currentTarget.getAttribute('data-popup');
+        openPopup(getPopupById(popupId));
     };
 
     /**
@@ -265,36 +194,24 @@ const ModalPopup = (function () {
      * Setup event listeners for popups
      */
     const setupEventListeners = () => {
-        // Find and attach click handlers to all "Join Waitlist" buttons
-        const joinWaitlistButtons = document.querySelectorAll('[data-join-waitlist]');
-        joinWaitlistButtons.forEach((button) => {
-            button.addEventListener('click', handleJoinWaitlistClick);
+        const dataPopupTriggers = document.querySelectorAll('[data-popup]');
+        dataPopupTriggers.forEach((trigger) => {
+            trigger.addEventListener('click', handleDataPopupClick);
         });
 
-        // Close buttons
         const closeButtons = document.querySelectorAll('.popup__close');
         closeButtons.forEach((button) => {
             button.addEventListener('click', handleCloseButtonClick);
         });
 
-        // Overlay click
         if (popupOverlay) {
             popupOverlay.addEventListener('click', handleOverlayClick);
         }
 
-        // Escape key
         document.addEventListener('keydown', handleEscapeKey);
 
-        // Form submission
-        if (waitlistForm) {
-            waitlistForm.addEventListener('submit', handleFormSubmit);
-        }
-
-        // Prevent popup closing on inner click
-        [waitlistPopup, donePopup].forEach((popup) => {
-            if (popup) {
-                popup.addEventListener('click', handlePopupClick);
-            }
+        allPopups().forEach((popup) => {
+            popup.addEventListener('click', handlePopupClick);
         });
     };
 
