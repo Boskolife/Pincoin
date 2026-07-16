@@ -220,7 +220,7 @@ html {
   }
 }
 
-// Shared App Store / Google Play buttons (desktop: popup, mobile: direct links)
+// Shared App Store / Google Play buttons (non-touch: popup, touch: direct links)
 .store-buttons {
   display: flex;
   align-items: center;
@@ -244,8 +244,8 @@ html {
     border: none;
     cursor: pointer;
 
-    // Popup trigger buttons are desktop-only
-    @include media('<desktop') {
+    // Hide popup triggers on touch devices
+    @media (hover: none) and (pointer: coarse) {
       display: none;
     }
 
@@ -260,11 +260,11 @@ html {
     }
   }
 
-  // Direct store links are shown on mobile/tablet instead of popup buttons
+  // Direct store links are shown on touch devices instead of popup buttons
   &__btn--link {
     display: none;
 
-    @include media('<desktop') {
+    @media (hover: none) and (pointer: coarse) {
       display: flex;
     }
   }
