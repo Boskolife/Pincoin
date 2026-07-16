@@ -237,16 +237,35 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 0;
+        margin: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        // Hide popup triggers on touch devices
+        @media (hover: none) and (pointer: coarse) {
+            display: none;
+        }
 
         @include media ("<phone") {
             width: 44px;
             height: 44px;
         }
 
-        img{
+        img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+        }
+    }
+
+    // Direct store links are shown on touch devices instead of popup buttons
+    &__app--link {
+        display: none;
+
+        @media (hover: none) and (pointer: coarse) {
+            display: flex;
         }
     }
 }
