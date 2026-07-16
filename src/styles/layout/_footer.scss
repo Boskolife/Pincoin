@@ -3,7 +3,7 @@
 
     &__content {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         align-items: center;
         gap: 28px;
 
@@ -74,24 +74,6 @@
                 display: flex;
             }
         }
-    }
-
-    &__social {
-        margin-left: auto;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-
-        @include media ("<tablet") {
-            margin: 0 auto;
-            order: 2;
-            gap: 31px;
-        }
-    }
-
-    &__social-link {
-        width: 47px;
-        height: 47px;
     }
 
     &__creator-link {
